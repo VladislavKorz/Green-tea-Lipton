@@ -25,7 +25,7 @@ class LoginView(View):
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
-        return redirect('index')
+        return redirect('login-form')
 
     def post(self, request, *args, **kwargs):
         pass
