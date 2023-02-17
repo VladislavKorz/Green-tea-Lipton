@@ -34,8 +34,12 @@
     <link id="color" rel="stylesheet" href="{% static 'css/assets/color-1.css' %}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/assets/responsive.css' %}">
+    
+    {% block head %}
+    {% endblock %}
   </head>
   <body>
+    {% block header %}
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- tap on tap ends-->
@@ -361,9 +365,12 @@
           <script class="empty-template" type="text/x-handlebars-template"><div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down, yikes!</div></script>
         </div>
       </div>
-      <!-- Page Header Ends                              -->
+      <!-- Page Header Ends -->
+      {% endblock %}
+
       <!-- Page Body Start-->
       <div class="page-body-wrapper">
+        {% block nav %}
         <!-- Page Sidebar Start-->
         <div class="sidebar-wrapper">
           <div>
@@ -798,6 +805,8 @@
             </nav>
           </div>
         </div>
+        {% endblock %}
+
         <!-- Page Sidebar Ends-->
         <div class="page-body">
           <div class="container-fluid">
@@ -813,7 +822,8 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-sm-12">
-                
+                {% block body %}
+                {% endblock %}
                 
               </div>
             </div>
@@ -846,5 +856,7 @@
     <script src="{% static 'js/assets/custom-card/custom-card.js' %}"></script>
     <script src="{% static 'js/assets/tooltip-init.js' %}"></script>
     <script src="{% static 'js/assets/script.js' %}"></script>
+    {% block script %}
+    {% endblock %}
   </body>
 </html>
