@@ -1,17 +1,20 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
+from users.forms import CustomAuthenticationForm
+
 
 
 class LoginView(View):
     def get(self, request, *args, **kwargs):
-        form = AuthenticationForm()
+        form = CustomAuthenticationForm()
         return render(request, 'users/login.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = AuthenticationForm(data=request.POST)
+        form = CustomAuthenticationForm(data=request.POST)
+        
         if form.is_valid():
             new_user = authenticate(username=form.cleaned_data['username'],
                                     password=form.cleaned_data['password'],
@@ -32,7 +35,7 @@ class LogoutView(View):
 
 class AccountView(View):
     def get(self, request, *args, **kwargs):
-        return HttpResponse('GET request!')
+        return HttpResponse(f'{request.user}')
 
     def post(self, request, *args, **kwargs):
         return HttpResponse('POST request!')
