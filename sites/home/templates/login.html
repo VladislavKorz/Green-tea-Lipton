@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock head %}
+
+
+
+{% block body %}
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            {% if user.is_authenticated %}
+                <div class="text-center">
+                    <p>Вы уже вошли</p>
+                    <a href="{% url 'logout' %}">Выйти</a>
+                </div>
+            {% else %}
+            <form method="post" class=' '>
+                {% csrf_token %}
+                {{ form }}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary ">войти</button>
+                </div>
+            </form>
+        </div>
+{% endif %}
+{% endblock body%}
+
