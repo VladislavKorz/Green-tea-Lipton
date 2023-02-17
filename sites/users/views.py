@@ -8,7 +8,7 @@ from django.views import View
 class LoginView(View):
     def get(self, request, *args, **kwargs):
         form = AuthenticationForm()
-        return render(request, 'login.html', {'form': form})
+        return render(request, 'users/login.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = AuthenticationForm(data=request.POST)
@@ -18,14 +18,14 @@ class LoginView(View):
                                     )
             login(request, new_user)
         else:
-            return render(request, 'login.html', {'form': form})
+            return render(request, 'users/login.html', {'form': form})
 
         return redirect('account')
 
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
-        return redirect('index')
+        return redirect('login-form')
 
     def post(self, request, *args, **kwargs):
         pass
