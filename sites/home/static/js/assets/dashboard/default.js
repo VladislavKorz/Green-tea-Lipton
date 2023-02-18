@@ -3,13 +3,13 @@ var today = new Date()
 var curHr = today.getHours()
 
 if (curHr >= 0 && curHr < 4) {
-    document.getElementById("greeting").innerHTML = 'Good Night';
+    document.getElementById("greeting").innerHTML = 'Спокойной ночи';
 } else if (curHr >= 4 && curHr < 12) {
-    document.getElementById("greeting").innerHTML = 'Good Morning';
+    document.getElementById("greeting").innerHTML = 'Доброе утро';
 } else if (curHr >= 12 && curHr < 16) {
-    document.getElementById("greeting").innerHTML = 'Good Afternoon';
+    document.getElementById("greeting").innerHTML = 'Добрый день';
 } else {
-    document.getElementById("greeting").innerHTML = 'Good Evening';
+    document.getElementById("greeting").innerHTML = 'Добрый вечер';
 }
 // time 
 function startTime() {

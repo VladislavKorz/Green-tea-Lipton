@@ -8,6 +8,104 @@
 {%block body%}
 <div class="container-fluid">
    <div class="row">
+      <div class="col-xl-4 col-lg-12 xl-50 morning-sec box-col-12">
+         <div class="card o-hidden profile-greeting" style="background: linear-gradient(26deg, var(--theme-deafult) 0%, #a26cf8 100%);">
+           <div class="card-body">
+             <div class="media">
+               <div class="badge-groups w-100">
+                 <div class="badge f-12"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock me-1"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span id="txt">3:44 AM</span></div>
+                 <div class="badge f-12"><i class="fa fa-spin fa-cog f-14"></i></div>
+               </div>
+             </div>
+             <div class="greeting-user text-center">
+               <div class="profile-vector"><img class="img-fluid w-20" src="{{request.user.profile.get_photo}}" style=" max-width: 150px; "></div>
+               <h4 class="f-w-600"><span id="greeting">Добрый день</span> <span class="right-circle">, {{request.user}} <i class="fa fa-check-circle f-14 middle"></i></span></h4>
+               <div class="whatsnew-btn"><a class="btn btn-primary" href="{% url 'task_list' %} ">Перейти к задачам</a></div>
+             </div>
+           </div>
+         </div>
+       </div>
+      <div class="col-xl-8">
+         <div class="card offer-box">
+           <div class="card-body p-0">
+             <div class="offer-slider">
+               <div class="carousel slide" id="carouselExampleCaptions" data-bs-ride="carousel">
+                 <div class="carousel-inner">
+                   <div class="carousel-item">
+                     <div class="selling-slide row">
+                       <div class="col-xl-4 col-md-6">
+                         <div class="d-flex">
+                           <div class="left-content">
+                             <p>Much More Selling product</p>
+                             <h4 class="f-w-600">Best Selling Product</h4><span class="badge badge-white rounded-pill">78% offer</span><span class="badge badge-dotted rounded-pill ms-2">Coupon Code : 12345</span>
+                           </div>
+                         </div>
+                       </div>
+                       <div class="col-xl-4 col-md-12">
+                         <div class="center-img"><img class="img-fluid" src="../assets/images/dashboard-2/offer-shoes-3.png" alt="..."></div>
+                       </div>
+                       <div class="col-xl-4 col-md-6">
+                         <div class="d-flex">
+                           <div class="right-content">
+                             <p>Money back Guarrantee</p>
+                             <h4 class="f-w-600">Women Straight Kurta</h4><span class="badge badge-white rounded-pill">$100.00</span>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="carousel-item active">
+                     <div class="selling-slide row">
+                       <div class="col-xl-4 col-md-6">
+                         <div class="d-flex">
+                           <div class="left-content">
+                             <p>Money back Guarrantee</p>
+                             <h4 class="f-w-600">Women Straight Kurta</h4><span class="badge badge-white rounded-pill">$100.00</span>
+                           </div>
+                         </div>
+                       </div>
+                       <div class="col-xl-4 col-md-12">
+                         <div class="center-img"><img class="img-fluid" src="../assets/images/dashboard-2/offer-shoes-3.png" alt="..."></div>
+                       </div>
+                       <div class="col-xl-4 col-md-6">
+                         <div class="d-flex">
+                           <div class="right-content">
+                             <p>Money back Guarrantee</p>
+                             <h4 class="f-w-600">Nike Air Shoes</h4><span class="badge badge-white rounded-pill">$120.55</span>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="carousel-item">
+                     <div class="selling-slide row">
+                       <div class="col-xl-4 col-md-6">
+                         <div class="d-flex">
+                           <div class="left-content">
+                             <p>Maximum Selling product</p>
+                             <h4 class="f-w-600">Best Selling Product</h4><span class="badge badge-white rounded-pill">50% offer</span><span class="badge badge-dotted rounded-pill ms-2">Coupon Code : 21546</span>
+                           </div>
+                         </div>
+                       </div>
+                       <div class="col-xl-4 col-md-12">
+                         <div class="center-img"><img class="img-fluid" src="../assets/images/dashboard-2/offer-shoes-3.png" alt="..."></div>
+                       </div>
+                       <div class="col-xl-4 col-md-6">
+                         <div class="d-flex">
+                           <div class="right-content">
+                             <p>Money back Guarrantee</p>
+                             <h4 class="f-w-600">Nike Air Shoes</h4><span class="badge badge-white rounded-pill">$120.55</span>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div><a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev" data-bs-original-title="" title=""><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next" data-bs-original-title="" title=""><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
       <div class="col-xl-4 col-lg-12 xl-50  box-col-6">
          <div class="card gradient-primary o-hidden">
             <div class="card-body">
@@ -17,7 +115,7 @@
             </div>
          </div>
       </div>
-      <div class="col-xl-8 col-md-12 box-col-12">
+      <div class="col-xl-4 col-md-12 box-col-12">
          <div class="email-right-aside bookmark-tabcontent">
             <div class="card email-body radius-left">
                <div class="ps-0">
@@ -35,12 +133,11 @@
                                        <tbody>
                                           <tr>
                                              <td>
-                                                <h6 class="task_title_0">Client meeting</h6>
-                                                <p class="project_name_0">General</p>
+                                                <h6 class="task_title_0">Встреча</h6>
+                                                <p class="project_name_0">28.02.2023</p>
                                              </td>
                                              <td>
-                                                <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing
-                                                   and typesetting industry. Lorem Ipsum has been</p>
+                                                <p class="task_desc_0">Встреча с руководителем и HR</p>
                                              </td>
                                              <td>
                                                 <a class="me-2" href="#">
@@ -56,29 +153,28 @@
                                                       </path>
                                                    </svg>
                                                 </a>
-                                                <a href="#">
-                                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                      viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                      class="feather feather-more-horizontal">
-                                                      <circle cx="12" cy="12" r="1"></circle>
-                                                      <circle cx="19" cy="12" r="1"></circle>
-                                                      <circle cx="5" cy="12" r="1"></circle>
-                                                   </svg>
-                                                </a>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <h6 class="task_title_0">Событие</h6>
+                                                <p class="project_name_0">07.03.2023</p>
                                              </td>
                                              <td>
-                                                <a href="#">
+                                                <p class="task_desc_0">Окончание испытательного срока</p>
+                                             </td>
+                                             <td>
+                                                <a class="me-2" href="#">
                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                       viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                      class="feather feather-trash-2">
-                                                      <polyline points="3 6 5 6 21 6"></polyline>
+                                                      class="feather feather-link">
                                                       <path
-                                                         d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                         d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
                                                       </path>
-                                                      <line x1="10" y1="11" x2="10" y2="17"></line>
-                                                      <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                      <path
+                                                         d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                                      </path>
                                                    </svg>
                                                 </a>
                                              </td>
@@ -95,12 +191,59 @@
             </div>
          </div>
       </div>
+      <div class="col-xl-4 xl-50 notification box-col-6">
+         <div class="card">
+            <div class="card-header card-no-border">
+               <div class="header-top">
+                  <h5 class="m-0">notification</h5>
+                  <div class="card-header-right-icon">
+                     <div class="dropdown">
+                        <button class="btn dropdown-toggle" id="dropdownMenuButton" type="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">Today</button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"><a
+                              class="dropdown-item" href="#">Today</a><a class="dropdown-item" href="#">Tomorrow</a><a
+                              class="dropdown-item" href="#">Yesterday </a></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-body pt-0">
+               <div class="media">
+                  <div class="media-body">
+                     <p>20-04-2020 <span>10:10</span></p>
+                     <h6>Updated Product<span class="dot-notification"></span></h6><span>Quisque a consequat ante sit
+                        amet
+                        magna...</span>
+                  </div>
+               </div>
+               <div class="media">
+                  <div class="media-body">
+                     <p>20-04-2020<span class="ps-1">Today</span><span class="badge badge-secondary">New</span></p>
+                     <h6>Tello just like your product<span class="dot-notification"></span></h6><span>Quisque a
+                        consequat
+                        ante sit amet magna... </span>
+                  </div>
+               </div>
+               <div class="media">
+                  <div class="media-body">
+                     <div class="d-flex mb-3">
+                        <div class="inner-img"><img class="img-fluid" src="../assets/images/notification/1.jpg"
+                              alt="Product-1"></div>
+                        <div class="inner-img"><img class="img-fluid" src="../assets/images/notification/2.jpg"
+                              alt="Product-2"></div>
+                     </div><span class="mt-3">Quisque a consequat ante sit amet magna...</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
 </div>
 
 {%endblock body%}
 
 {%block script%}
+<script src="{%static 'js/assets/dashboard/default.js' %}"></script>
 <script src="{%static 'js/assets/datepicker/date-picker/datepicker.js' %}"></script>
 <script src="{%static 'js/assets/datepicker/date-picker/datepicker.en.js' %}"></script>
 <script src="{%static 'js/assets/datepicker/date-picker/datepicker.custom.js' %}"></script>
