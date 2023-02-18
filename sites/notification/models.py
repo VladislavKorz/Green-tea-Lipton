@@ -15,8 +15,8 @@ class Notification(models.Model):
 
     class Meta:
         ordering = ['title']
-        verbose_name = 'Уведомления'
-
+        verbose_name = 'Уведомление'
+        verbose_name_plural = 'Уведомления'
 class NotificationUser(models.Model):
     user = models.ForeignKey("users.Profile", verbose_name="", on_delete=models.CASCADE)
     notification = models.ForeignKey("notification.Notification", verbose_name="", on_delete=models.CASCADE)

@@ -12,7 +12,7 @@ class Department(models.Model):
     class Meta:
         ordering = ['title']
         verbose_name = 'Отдел'
-
+        verbose_name_plural = 'Отделы'
 class Profile(models.Model):
     ROLS_CHOICES = (
         ("NC", "Стажёр"),
