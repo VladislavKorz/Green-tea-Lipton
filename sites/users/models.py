@@ -24,6 +24,7 @@ class Profile(models.Model):
     city = models.CharField('Город',max_length=200,null=True)
     post = models.CharField('Должность',max_length=200,null=True)
     department = models.ForeignKey(Department, verbose_name="Отдел", on_delete=models.CASCADE, null=True)
+    manager =models.BooleanField('Является руководством?',default=False)
     rols = models.CharField(max_length=10, choices=ROLS_CHOICES, default="NC")
     phone = models.CharField(max_length=20, default='-')
     telegram_id = models.CharField(max_length=50, default='-')
@@ -76,8 +77,7 @@ class Profile(models.Model):
         self.calculate_avg_speed()
         self.save()
 
-    def __str__(self):
-        return f'Metrics for {self.employee}'
+    
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
