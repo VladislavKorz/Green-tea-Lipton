@@ -9,3 +9,6 @@
     background-position: top !important;
     height: 300px !important;
 }
+.user-list li{
+    margin-right: 30px;
+}
