@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from .models import *
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.clickjacking import xframe_options_exempt
 
+@login_required
 def roadMapsViews(request):
     context = {
         'title': "Карта уровней",
