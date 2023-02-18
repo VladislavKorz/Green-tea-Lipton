@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'tasks',
     'faq',
     'ads',
+    'achievements',
+    
 
 ]
 
