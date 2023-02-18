@@ -71,7 +71,7 @@
                                 <div class="media-body">
                                   <h6> <span class="first_name_{{forloop.counter0}}">{{contact.user.get_full_name}}</span>
                                   </h6>
-                                  <p class="email_add_{{forloop.counter0}}">{{contact.user.email}}</p>
+                                  <p class="email_add_{{forloop.counter0}}">{{ contact.user.profile.department.title }}</p>
                                 </div>
                               </div>
                             </a>
@@ -89,11 +89,11 @@
                                   <div class="media-body mt-0">
                                     <h5><span class="first_name_0">{{contact.user.get_full_name}}</span>
                                     </h5>
-                                    <p class="email_add_0">{{contact.user.email}}</p>
+                                    <p class="email_add_0">{{contact.user.profile.department.all}}</p>
                                   </div>
                                 </div>
                                 <div class="email-general">
-                                  <h6 class="mb-3">Основное </h6>
+                                  <h6 class="mb-3">Основное</h6>
                                   <ul>
                                     <li>Имя <span class="font-primary first_name_0">{{contact.user.first_name}}</span></li>
                                     <li>Фамилия <span class="font-primary first_name_0">{{contact.user.last_name}}</span></li>
@@ -154,10 +154,6 @@
                                     <h5><span class="first_name_5">{{ contact.user.get_full_name }}</span>
                                     </h5>
                                     <p class="email_add_5">markjecno@gmail.com</p>
-                                    <ul>
-                                      <li><a href="#" onclick="printContact(5)" data-bs-toggle="modal"
-                                          data-bs-target="#printModal">Print</a></li>
-                                    </ul>
                                   </div>
                                 </div>
                                 <div class="email-general">
@@ -182,10 +178,6 @@
                                     <h5><span class="first_name_6">Jason </span><span class="last_name_6">Borne</span>
                                     </h5>
                                     <p class="email_add_6">jasonb@gmail.com</p>
-                                    <ul>
-                                      <li><a href="#" onclick="printContact(6)" data-bs-toggle="modal"
-                                          data-bs-target="#printModal">Print</a></li>
-                                    </ul>
                                   </div>
                                 </div>
                                 <div class="email-general">
@@ -207,10 +199,6 @@
                                     <h5> <span class="first_name_7">Sarah </span><span class="last_name_7">Loren</span>
                                     </h5>
                                     <p class="email_add_7">barnes@gmail.com</p>
-                                    <ul>
-                                      <li><a href="#" onclick="printContact(7)" data-bs-toggle="modal"
-                                          data-bs-target="#printModal">Print</a></li>
-                                    </ul>
                                   </div>
                                 </div>
                                 <div class="email-general">
@@ -232,10 +220,6 @@
                                     <h5> <span class="first_name_8">Andew </span><span class="last_name_8">Jon</span>
                                     </h5>
                                     <p class="email_add_8">andrewj@gmail.com</p>
-                                    <ul>
-                                      <li><a href="#" onclick="printContact(8)" data-bs-toggle="modal"
-                                          data-bs-target="#printModal">Print</a></li>
-                                    </ul>
                                   </div>
                                 </div>
                                 <div class="email-general">
@@ -292,10 +276,6 @@
                                     <h5><span class="first_name_5">{{ contact.user.get_full_name }}</span>
                                     </h5>
                                     <p class="email_add_5">markjecno@gmail.com</p>
-                                    <ul>
-                                      <li><a href="#" onclick="printContact(5)" data-bs-toggle="modal"
-                                          data-bs-target="#printModal">Print</a></li>
-                                    </ul>
                                   </div>
                                 </div>
                                 <div class="email-general">
@@ -320,10 +300,6 @@
                                     <h5><span class="first_name_6">Jason </span><span class="last_name_6">Borne</span>
                                     </h5>
                                     <p class="email_add_6">jasonb@gmail.com</p>
-                                    <ul>
-                                      <li><a href="#" onclick="printContact(6)" data-bs-toggle="modal"
-                                          data-bs-target="#printModal">Print</a></li>
-                                    </ul>
                                   </div>
                                 </div>
                                 <div class="email-general">
@@ -345,10 +321,6 @@
                                     <h5> <span class="first_name_7">Sarah </span><span class="last_name_7">Loren</span>
                                     </h5>
                                     <p class="email_add_7">barnes@gmail.com</p>
-                                    <ul>
-                                      <li><a href="#" onclick="printContact(7)" data-bs-toggle="modal"
-                                          data-bs-target="#printModal">Print</a></li>
-                                    </ul>
                                   </div>
                                 </div>
                                 <div class="email-general">
@@ -370,10 +342,6 @@
                                     <h5> <span class="first_name_8">Andew </span><span class="last_name_8">Jon</span>
                                     </h5>
                                     <p class="email_add_8">andrewj@gmail.com</p>
-                                    <ul>
-                                      <li><a href="#" onclick="printContact(8)" data-bs-toggle="modal"
-                                          data-bs-target="#printModal">Print</a></li>
-                                    </ul>
                                   </div>
                                 </div>
                                 <div class="email-general">
