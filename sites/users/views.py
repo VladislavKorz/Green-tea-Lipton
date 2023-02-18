@@ -57,6 +57,8 @@ def sync(request):
 def ContactsView(request):
     context = {
         'title': 'Контакты',
-        'contactAll': Profile.objects.all()
+        'contactAll': Profile.objects.all(),
+        'contactDepartment': Profile.objects.filter(department=request.user.profile.department),
+        'contactManagement': Profile.objects.filter(manager=True),
     }
     return render(request, 'users/contacts.html', context)
