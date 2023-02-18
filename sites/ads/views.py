@@ -5,4 +5,7 @@ from .models import Advertisement
 def faq(request, pk):
     faq = get_object_or_404(Advertisement, pk=pk)
     
-    return render(request, 'ads/index.html', {'objlist': Advertisement.objects.all()})
+    return render(request, 'faq/faq_list.html', {'objlist': Advertisement.objects.all()})
+
+def ads(request):
+    return render(request, 'ads/index.html')
