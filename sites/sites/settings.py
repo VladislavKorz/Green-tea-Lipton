@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'home',
     'users',
     'tasks',
+    'faq',
+    'ads',
 
 ]
 

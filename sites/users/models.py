@@ -12,7 +12,7 @@ class Department(models.Model):
     class Meta:
         ordering = ['title']
         verbose_name = 'Отдел'
-
+        verbose_name_plural = 'Отделы'
 class Profile(models.Model):
     ROLS_CHOICES = (
         ("NC", "Стажёр"),
@@ -28,6 +28,9 @@ class Profile(models.Model):
     birthday = models.DateField("День рождение", auto_now=False, auto_now_add=False, null=True)
     start_work = models.DateField("Старт работы в компании испытательного срока", auto_now=False, auto_now_add=False, null=True)
     end_probation = models.DateField("Окончание испытательного срока", auto_now=False, auto_now_add=False, null=True)
+
+    def __str__(self):
+        return self.user.get_full_name()
 
     def get_photo(self):
         if self.photo:
