@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Task, Comment
+from .models import *
+
+admin.site.register(Column)
 
 class CommentInline(admin.StackedInline):
     model = Comment
