@@ -2,39 +2,7 @@
 {% load static %}
 
 {% block body %}
-<!-- <h1>Список вопросов и ответов</h1>
-  {% if faqs %}
-    <ul>
-      {% for faq in faqs %}
-        <li><a href="{% url 'faq_detail' faq.id %}">{{ faq.question }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>Нет вопросов и ответов.</p>
-  {% endif %} -->
-<div class="container-fluid">
-    <div class="page-title">
-      <div class="row">
-        <div class="col-6">
-          <h3>FAQ</h3>
-        </div>
-        <div class="col-6">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="feather feather-home">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg></a></li>
-            <li class="breadcrumb-item">FAQ</li>
-            <li class="breadcrumb-item active">FAQ</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container-fluid">
+<div class="container">
   <div class="xl-100 box-col-6">
     <div class="card bg-primary">
       <div class="card-body">
@@ -47,183 +15,33 @@
       </div>
     </div>
   </div>
-  <div class="header-faq">
-    <h5 class="mb-0">Quick Questions are answered</h5>
-  </div>
+
+{% for cat in categories %}
+<div class="header-faq">
+    <h5 class="mb-0">{{cat}}</h5>
 </div>
-<div class="container-fluid">
+<div class="container">
   <div class="row default-according style-1 faq-accordion" id="accordionoc">
     <div class="col-xl-8 xl-60 col-lg-6 col-md-7">
+      {% for el in cat.questionList.all %}
       <div class="card">
         <div class="card-header">
           <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg> Integrating WordPress with Your Website?</button>
+            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon{{el.pk}}" aria-expanded="false" aria-controls="collapseicon{{el.pk}}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>
+              {{el.question|safe}}
+            </button>
           </h5>
         </div>
-        <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+        <div class="collapse" id="collapseicon{{el.pk}}" aria-labelledby="collapseicon{{el.pk}}" data-bs-parent="#accordionoc">
+          <div class="card-body">{{el.answer|safe}}</div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon2" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg> WordPress Site Maintenance ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon2" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon3" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Meta Tags in WordPress ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon3" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon4" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>   WordPress in Your Language ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon4" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="faq-title">
-        <h6>Intellectual Property</h6>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon5" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg> WordPress Site Maintenance ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon5" aria-labelledby="collapseicon5" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon7" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>   WordPress in Your Language ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon7" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon8" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Integrating WordPress with Your Website ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon8" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="faq-title">
-        <h6>Selling And Buying</h6>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon9" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg> WordPress Site Maintenance ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon9" aria-labelledby="collapseicon9" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon10" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Meta Tags in WordPress ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon10" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon11" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Validating a Website ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon11" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon12" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Know Your Sources ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon12" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="faq-title">
-        <h6>User Accounts</h6>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon13" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Integrating WordPress with Your Website ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon13" aria-labelledby="collapseicon13" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon14" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>WordPress Site Maintenance ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon14" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon16" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg> WordPress in Your Language ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon16" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon17" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>  Validating a Website ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon17" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon18" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Meta Tags in WordPress ?</button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseicon18" data-bs-parent="#accordionoc">
-          <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
+  </div>
+  
+{% endfor %}
     <div class="col-xl-4 xl-40 col-lg-6 col-md-5">
       <div class="row">
         <div class="col-lg-12">
