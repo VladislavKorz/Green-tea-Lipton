@@ -121,7 +121,9 @@
                                           class="birth_year_0 ms-1">1994</span></span></li>
                                     <li>Должность<span class="font-primary personality_0">Директор</span></li>
                                     <li>Город<span class="font-primary city_0">Томск</span></li>
-                                    <li>Номер телефона<span class="font-primary mobile_num_0">+7 963 1975177</span></li>
+                                    {% if contact.phone|length > 10 %}
+                                    <li>Номер телефона<span class="font-primary mobile_num_0">{{contact.phone}}</span></li>
+                                    {% endif %}
                                     <li>Телеграмм<span class="font-primary url_add_0">@vkorzhovv</span></li>
                                     <li>Whatss App<span class="font-primary interest_0">+796319</span></li>
                                   </ul>
