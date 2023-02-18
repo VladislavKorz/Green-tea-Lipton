@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock head %}
+
+
+
+
+{% block body %}
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Настройки</h5>
+          </div>
+          <div class="card-body">
+            <div class="m-portlet__body">
+              <div class="row">
+                <div class="col-xl-5"></div>
+              </div>
+              <form class="theme-form sm-form">
+                <div class="mb-3">
+                  <div class="row">
+                    <label class="col-xl-2 col-sm-12 col-md-12 col-form-label">Размещение</label>
+                    <div class="col-xl-4 col-sm-12 col-md-12 mb-md-4 mb-2">
+                      <select class="form-select form-control" id="bootstrap-notify-placement-from">
+                        <option value="top">Сверхнего края</option>
+                        <option value="bottom">Снижнего края</option>
+                      </select>
+                    </div>
+                    <div class="col-xl-4 col-md-12 col-sm-12 mb-4">
+                      <select class="form-select form-control" id="bootstrap-notify-placement-align">
+                        <option value="left">Слевого края</option>
+                        <option value="right" select.form-selected="">Справого края</option>
+                        <option value="center">По центу</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  
+                  </div>
+                  <div class="row"></div>
+                  <div class="mb-3 row"></div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="mb-3 row">
+                    <label class="col-sm-4 col-6 col-form-label">URL Кликабельный</label>
+                    <div class="col-sm-8 col-6">
+                      <div class="media-body text-start icon-state">
+                        <label class="switch">
+                          <input id="bootstrap-notify-url" type="checkbox"><span class="switch-state"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label class="col-sm-4 col-6 col-form-label">Разрешить уведомления</label>
+                    <div class="col-sm-8 col-6">
+                      <div class="media-body text-start icon-state">
+                        <label class="switch">
+                          <input id="bootstrap-notify-dismiss" type="checkbox"><span class="switch-state"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label class="col-sm-4 col-6 col-form-label">Пауза при наведении</label>
+                    <div class="col-sm-8 col-6">
+                      <div class="media-body text-start icon-state">
+                        <label class="switch">
+                          <input id="bootstrap-notify-pause" type="checkbox"><span class="switch-state"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label class="col-sm-4 col-6 col-form-label">Сортировка</label>
+                    <div class="col-sm-8 col-6">
+                      <div class="media-body text-start icon-state">
+                        <label class="switch">
+                          <input id="bootstrap-notify-top" type="checkbox"><span class="switch-state"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                </div>
+                <div class="col-xl-6 theme-form sm-form">
+                  <div class="mb-3 row">
+                    <label class="col-form-label col-lg-3 col-sm-12">Расстояние</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12">
+                      <input class="form-control digits" id="bootstrap-notify-spacing" type="number" value="10">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label class="col-form-label col-lg-3 col-sm-12">Отступ по X</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12">
+                      <input class="form-control digits" id="bootstrap-notify-offset-x" type="number" value="30">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label class="col-form-label col-lg-3 col-sm-12">Отступ по Y</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12">
+                      <input class="form-control digits" id="bootstrap-notify-offset-y" type="number" value="30">
+                    </div>
+                  </div>
+                  
+                  <div class="mb-3 row">
+                    <label class="col-form-label col-lg-3 col-sm-12">Таймер</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12">
+                      <input class="form-control digits" id="bootstrap-notify-timer" type="number" value="2000">
+                    </div>
+                  
+                  
+                 
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="col-sm-12">
+              <button class="btn btn-primary" id="bootstrap-notify-gen-btn">Сохранить изменения</button>
+              <button class="btn btn-light" type="reset">Выйти</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<!-- Container-fluid Ends-->
+{% endblock body %}
