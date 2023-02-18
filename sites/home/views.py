@@ -9,7 +9,7 @@ def index(request):
     context = {
         'title': "Привет",
     }
-    return render(request,'home/index.html', context)
+    return render(request,'home/dashboard.html', context)
 @login_required
 def calendar(request):
     context = {
