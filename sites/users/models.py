@@ -41,7 +41,41 @@ class Profile(models.Model):
     class Meta:
         verbose_name_plural = 'Профили'
         verbose_name = 'Профиль'
+    def calculate_speed(self):
+        total_time = 0
+        num_completed = 0
+        tasks = Task.objects.filter(employees=self.employee, status='done')
+        for task in tasks:
+            if task.start_time and task.end_time:
+                total_time += (task.end_time - task.start_time).seconds
+                num_completed += 1
+        if num_completed > 0:
+            self.speed = total_time / num_completed
+        else:
+            self.speed = 0
 
+    def calculate_completion_rate(self):
+        num_total = self.num_assigned
+        if num_total > 0:
+            self.completion_rate = self.num_completed / num_total * 100
+        else:
+            self.completion_rate = 0
+
+    def calculate_avg_speed(self):
+        num_completed = self.num_completed
+        if num_completed > 0:
+            self.avg_speed = self.speed * num_completed / self.num_assigned
+        else:
+            self.avg_speed = 0
+
+    def update_metrics(self):
+        self.calculate_speed()
+        self.calculate_completion_rate()
+        self.calculate_avg_speed()
+        self.save()
+
+    def __str__(self):
+        return f'Metrics for {self.employee}'
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
