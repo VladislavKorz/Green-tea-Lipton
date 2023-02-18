@@ -45,7 +45,7 @@
       <!-- Page Header Start-->
       <div class="page-header">
         <div class="header-wrapper row m-0">
-          <form class="form-inline search-full col" action="#" method="get">
+          <form class="form-inline search-full col" action="{%url 'search_faq' %}" method="get">
             <div class="form-group w-100">
               <div class="Typeahead Typeahead--twitterUsers">
                 <div class="u-posRelative">
@@ -175,7 +175,7 @@
                 
                   <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#"><i data-feather="sunrise"> </i><span>База знаний</span></a></li>
                   
-                  <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#"><i data-feather="help-circle"> </i><span>FAQ</span></a></li>
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{%url 'faq'%}"><i data-feather="help-circle"> </i><span>FAQ</span></a></li>
                   
                 </ul>
               </div>
