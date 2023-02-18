@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '+&7lazz=g6v$9v3d98!aed1##=^r!)4u%+jhp0d6#rtge@_!(_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["rm.qycode.ru", "www.rm.qycode.ru", "127.0.0.1"]
 

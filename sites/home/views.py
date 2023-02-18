@@ -29,3 +29,11 @@ def search_faq(request):
     else:
         results = None
     return render(request, 'faq/faq_list.html', {'results': results, 'query': query})
+
+def error_404(request, exception):
+    data = {}
+    return render(request, 'error_page/error-404.html', data, status=404)
+
+def error_500(request):
+    data = {}
+    return render(request, 'error_page/error-500.html', data, status=500)
