@@ -1,10 +1,8 @@
-from django.core.management.base import BaseCommand
 from django.conf import settings
 import html2text
 from loguru import logger
 
 import telebot
-from telebot import types
 
 bot = telebot.TeleBot(settings.TELEGRAM_BOT_API_KEY)
 
@@ -17,7 +15,6 @@ def notice(message):
 
 
 def send_message_to_telegram_chat(telegram_id, title, text):
-    logger.debug( f"{title}\n{text}")
     bot.send_message(telegram_id, html2text.html2text(f"{title}<br>{text}"), parse_mode='HTML')
 
 
