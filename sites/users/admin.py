@@ -4,6 +4,7 @@ from users.models import *
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('pk', 'user', 'rols', 'phone', 'telegram_id','city','post')
+    list_display_links = ('pk', 'user')
 
 
 @admin.register(Department)
