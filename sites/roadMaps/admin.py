@@ -8,7 +8,7 @@ from .models import *
 class guideActionAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ["order_count", "title", "bigBox", "required"]
     list_display_links = ["order_count", "title"]
-    list_filter = ['category', ]
+    list_filter = ['category__title', ]
     search_fields = ["title", "text"]
 
 

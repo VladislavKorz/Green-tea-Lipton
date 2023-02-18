@@ -11,7 +11,7 @@ class guideActionCategoria(models.Model):
     
     class Meta:
         ordering = ['title']
-        verbose_name = 'Карта'
+        verbose_name = 'Категории'
 
 class guideAction(models.Model):
     category = models.ForeignKey(guideActionCategoria, on_delete=models.CASCADE, null=True)
