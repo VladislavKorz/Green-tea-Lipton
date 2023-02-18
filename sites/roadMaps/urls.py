@@ -3,6 +3,6 @@ from .views import *
 
 urlpatterns = [
     path('', roadMapsViews, name='roadMaps'),
-    path('<str:pk>', roadMapsSingle, name='roadMapsSingle'),
+    path('<int:pk>', roadMapsSingle, name='roadMapsSingle'),
     
 ]

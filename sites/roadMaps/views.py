@@ -15,8 +15,9 @@ def roadMapsViews(request):
 @xframe_options_exempt
 def roadMapsSingle(request, pk):
     level = guideAction.objects.get(pk=pk)
+    
     context = {
         'title': f"Уровень {level.order_count}",
-        'level': level
+        'level': level,
     }
     return render(request,'roadMaps/singleRM.html', context)
