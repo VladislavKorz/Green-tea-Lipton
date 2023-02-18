@@ -1,11 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block content %}
-  <h1>Tasks</h1>
-  <ul>
-    {% for task in tasks %}
-      <li><a href="{% url 'task_detail' pk=task.pk %}">{{ task.title }}</a></li>
-    {% endfor %}
-  </ul>
-  <a href="{% url 'task_create' %}">Create task</a>
+{% block body %}
+<h1>Tasks</h1>
+<ul>
+  {% for task in tasks %}
+  <li><a href="{% url 'task_detail' pk=task.pk %}">{{ task.title }}</a></li>
+  {% endfor %}
+</ul>
+<!-- <a href="{% url 'task_create' %}">Create task</a> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Default Demo</h5>
+        </div>
+        <div class="card-body">
+          <div id="demo1" style=" display: flex;">
+            <div class="kanban-container" style="width: 1290px;">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/assets/jkanban/jkanban.js' %}"></script>
+<script src="{% static 'js/assets/jkanban/custom.js' %}"></script>
 {% endblock %}

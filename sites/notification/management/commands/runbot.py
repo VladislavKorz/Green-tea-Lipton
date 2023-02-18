@@ -1,5 +1,3 @@
-from django.conf import settings
-import html2text
 from loguru import logger
 from django.urls import reverse
 from django.conf import settings 
@@ -26,3 +24,4 @@ def send_message_to_telegram_chat(telegram_id, title, text):
 
 bot.polling(non_stop=True)
 
+# bot.infinity_polling()
