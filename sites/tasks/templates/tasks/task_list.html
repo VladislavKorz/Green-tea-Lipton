@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block body %}
-<h1>Tasks</h1>
+<link rel="stylesheet" href="{% static 'css/assets/vendors/jkanban.css' %}">
 <ul>
   {% for task in tasks %}
   <li><a href="{% url 'task_detail' pk=task.pk %}">{{ task.title }}</a></li>
@@ -14,11 +14,8 @@
   <div class="row">
     <div class="col-12">
       <div class="card">
-        <div class="card-header">
-          <h5>Default Demo</h5>
-        </div>
         <div class="card-body">
-          <div id="demo1" style=" display: flex;">
+          <div id="kanban-box-id" style=" display: flex;">
             <div class="kanban-container" style="width: 1290px;">
               
             </div>
@@ -33,5 +30,57 @@
 
 {% block script %}
 <script src="{% static 'js/assets/jkanban/jkanban.js' %}"></script>
-<script src="{% static 'js/assets/jkanban/custom.js' %}"></script>
+{% comment %} <script src="{% static 'js/assets/jkanban/custom.js' %}"></script> {% endcomment %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var options = {
+        boards: [
+        // {% for col in columns %}
+          {
+            id: 'column-{{col.pk}}',
+            title: '{{col.title}}',
+            item: [
+            // {% for tasks in col.cards.all %}
+            { id: 'item-{{col.pk}}-{{ tasks.pk }}', title: `
+                            <a class="kanban-box" href="#"><span class="date">{{tasks.deadline|date}}</span>
+                              {% if tasks.importance == 1 %}
+                              <span class="badge badge-success f-right">Не срочно</span>
+                              {% elif tasks.importance == 2 %}
+                              <span class="badge badge-primary f-right">Cрочно</span>
+                              {% elif tasks.importance == 3 %}
+                              <span class="badge badge-danger f-right">Очень срочно</span>
+                              {% endif %}
+                            <h6>{{tasks.title}}</h6>
+                            <div class="media">
+                              <div class="media-body">
+                                <p>{{tasks.description|striptags|truncatechars:45}}</p>
+                              </div>
+                            </div>
+                            <div class="d-flex mt-3">
+                              <ul class="list">
+                                <li><i class="fa fa-comments-o"></i>{{ tasks.commentsList.all.count }}</li>
+                              </ul>
+                              <div class="customers">
+                                <ul>
+                                  {% for assigned in tasks.assigned_to.all %}
+                                  <li class="d-inline-block">
+                                    <img class="img-40 rounded-circle" src="{{assigned.get_photo}}" alt="" data-original-title="" title="{{assigned.user.get_full_name}}">
+                                  </li>
+
+                                  {% endfor %}
+                                </ul>
+                              </div>
+                            </div></a>
+                      `
+            },
+            // {% endfor %}
+            ]
+          },
+        // {% endfor %}
+        ]
+      };
+
+      var kanban = new jKanban(Object.assign({}, options, {element: '#kanban-box-id'}));
+    });
+  </script>
 {% endblock %}

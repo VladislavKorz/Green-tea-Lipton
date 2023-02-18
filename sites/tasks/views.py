@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Task
+from .models import Task, Column
 
 
 def task_list(request):
-    tasks = Task.objects.all()
-    return render(request, 'tasks/task_list.html', {'tasks': tasks})
+    title = "Менеджер задач"
+    columns = Column.objects.all()
+    return render(request, 'tasks/task_list.html', {'title':title, 'columns': columns})
 
 def task_detail(request, pk):
     task = Task.objects.get(pk=pk)
