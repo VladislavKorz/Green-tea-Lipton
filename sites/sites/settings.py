@@ -25,7 +25,7 @@ SECRET_KEY = '+&7lazz=g6v$9v3d98!aed1##=^r!)4u%+jhp0d6#rtge@_!(_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["rm.qycode.ru", "www.rm.qycode.ru", "127.0.0.1"]
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'users',
     'tasks',
     'faq',
+    'ads',
 
 ]
 

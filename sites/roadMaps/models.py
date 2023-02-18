@@ -17,7 +17,7 @@ class guideAction(models.Model):
     class Meta:
         ordering = ['department', 'order_count']
         verbose_name = 'Карта'
-
+        verbose_name_plural = 'Карты'
     def get_absolute_url(self):
         return reverse("roadMapsSingle", kwargs={"pk": self.pk})
     
