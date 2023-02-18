@@ -29,6 +29,9 @@ class Profile(models.Model):
     start_work = models.DateField("Старт работы в компании испытательного срока", auto_now=False, auto_now_add=False, null=True)
     end_probation = models.DateField("Окончание испытательного срока", auto_now=False, auto_now_add=False, null=True)
 
+    def __str__(self):
+        return self.user.get_full_name()
+
     def get_photo(self):
         if self.photo:
             return self.photo.url
