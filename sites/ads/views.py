@@ -8,4 +8,7 @@ def faq(request, pk):
     return render(request, 'faq/faq_list.html', {'objlist': Advertisement.objects.all()})
 
 def ads(request):
-    return render(request, 'ads/index.html')
+    context = {
+        'title': "Обьявления",
+    }
+    return render(request,'ads/index.html', context)
