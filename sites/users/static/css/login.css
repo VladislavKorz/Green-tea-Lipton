@@ -1,10 +1,11 @@
 .container {
     height: 100vh;
-    /* делаем блок высотой во всё окно браузера */
     display: flex;
-    /* превращаем блок в flex-контейнер */
     justify-content: center;
-    /* выравниваем содержимое по центру по горизонтали */
     align-items: center;
-    /* выравниваем содержимое по центру по вертикали */
+}
+.cardheader{
+    background-size: cover !important;
+    background-position: top !important;
+    height: 300px !important;
 }
