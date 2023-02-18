@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+
+{% endblock head %}
+
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="circle-container">
+        {% for obj in mapObj %}
+            {% if obj.bigBox %}
+            <div class="circle">{{ obj.order_count }}</div>
+            {% else %}
+            <div class="small-circle">{{ obj.order_count }}</div>
+            {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="box-iframe"></div>
+    </div>
+  </div>
+</div>
+
+  
+{% endblock body %}
+
+
+{% block script %}
+
+
+<script>
+    // Получаем ссылку и окно iframe
+    var link = document.querySelector('.open-iframe');
+    var boxIframe = document.querySelector('.box-iframe');
+
+    // Обработчик клика на ссылке
+    link.addEventListener('click', function(e) {
+        // Отменяем стандартное действие ссылки
+        e.preventDefault();
+
+        // Создаем элемент iframe
+        var iframe = document.createElement('iframe');
+
+        // Устанавливаем атрибуты для iframe
+        iframe.setAttribute('src', this.getAttribute('href'));
+        iframe.setAttribute('width', '100%');
+        iframe.setAttribute('height', '400px');
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allowfullscreen', '');
+
+        // Очищаем содержимое окна iframe
+        boxIframe.innerHTML = '';
+
+        // Добавляем iframe в окно iframe
+        boxIframe.appendChild(iframe);
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var circles = $('.circle');
+        var container = $('.circle-container');
+        
+        circles.each(function(index) {
+          var circle = $(this);
+          var offset = 100;
+          
+          if (index % 2 == 0) {
+            offset = -100;
+          }
+          
+          circle.css('margin-top', offset + 'px');
+        });
+      });
+        
+</script>
+{% endblock script %}

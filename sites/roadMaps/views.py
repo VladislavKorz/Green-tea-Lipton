@@ -6,4 +6,4 @@ def roadMapsViews(request):
         'title': "Карта уровней",
         'mapObj': guideAction.objects.all()
     }
-    return render(request,'home/road_maps.html', context)
+    return render(request,'roadMaps/road_maps.html', context)
