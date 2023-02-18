@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_ckeditor_5',
+    'adminsortable2',
     'roadMaps',
     'crispy_forms',
     "crispy_bootstrap5",
-
-    'sites',
+    'notification',
     'dashboard',
     'home',
     'users',
