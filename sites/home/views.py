@@ -28,4 +28,4 @@ def search_faq(request):
         )
     else:
         results = None
-    return render(request, 'faq/faq_list.html', {'results': results})
+    return render(request, 'faq/faq_list.html', {'results': results, 'query': query})
