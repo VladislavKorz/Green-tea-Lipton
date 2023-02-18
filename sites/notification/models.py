@@ -1,5 +1,10 @@
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from notification.management.commands.bot import send_message_to_telegram_chat
+from users.models import Profile
+
 
 class Notification(models.Model):
     ROLS_CHOICES = (
@@ -24,4 +29,8 @@ class NotificationUser(models.Model):
     send_status = models.BooleanField("Статус отправки", default=True)
     create = models.DateTimeField("Дата создания", auto_now=False, auto_now_add=True)
 
-    
+@receiver(post_save, sender=Notification)
+def send_notification_to_telegram(sender, instance, **kwargs):
+    users_with_role = Profile.objects.filter(rols=instance.rols)
+    for user in users_with_role:
+        send_message_to_telegram_chat(user.telegram_id, instance.title, instance.text)
