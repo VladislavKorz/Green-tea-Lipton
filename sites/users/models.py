@@ -14,7 +14,9 @@ class Profile(models.Model):
     rols = models.CharField(max_length=10, choices=ROLS_CHOICES, default="NC")
     phone = models.CharField(max_length=20, default='-')
     telegram_id = models.CharField(max_length=50, default='-')
-
+    birthday = models.DateField("День рождение", auto_now=False, auto_now_add=False, null=True)
+    start_work = models.DateField("Старт работы в компании испытательного срока", auto_now=False, auto_now_add=False, null=True)
+    end_probation = models.DateField("Окончание испытательного срока", auto_now=False, auto_now_add=False, null=True)
     class Meta:
         verbose_name_plural = 'Профили'
         verbose_name = 'Профиль'
