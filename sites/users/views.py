@@ -26,15 +26,15 @@ class LoginView(View):
         else:
             return render(request, 'users/login.html', {'form': form})
 
-        return redirect('account')
+        return redirect('profile')
 
 class LogoutView(View):
-    @login_required
+    
     def get(self, request, *args, **kwargs):
         logout(request)
-        return redirect('login-form')
+        return redirect('login')
 
-    @login_required
+    
     def post(self, request, *args, **kwargs):
         pass
 
