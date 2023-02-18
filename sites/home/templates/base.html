@@ -5,12 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cuba admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="pixelstrap">
     <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
     <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
-    <title>Cuba - Premium Admin Template</title>
+    <title>{{ title }}</title>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
@@ -52,7 +49,7 @@
             <div class="form-group w-100">
               <div class="Typeahead Typeahead--twitterUsers">
                 <div class="u-posRelative">
-                  <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Search Cuba .." name="q" title="" autofocus>
+                  <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Поиск по вопросам и базе данных .." name="q" title="" autofocus>
                   <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><i class="close-search" data-feather="x"></i>
                 </div>
                 <div class="Typeahead-menu"></div>
@@ -73,49 +70,8 @@
                   <div class="current_lang">
                      
               </li>
-              <li>                         <span class="header-search"><i data-feather="search"></i></span></li>
-              
-              <li class="onhover-dropdown">
-                <div class="notification-box"><i data-feather="star"></i></div>
-                <div class="onhover-show-div bookmark-flip">
-                  <div class="flip-card">
-                    <div class="flip-card-inner">
-                      <div class="front">
-                        <ul class="droplet-dropdown bookmark-dropdown">
-                          <li class="gradient-primary"><i data-feather="star"></i>
-                            <h6 class="f-18 mb-0">Bookmark</h6>
-                          </li>
-                          <li>
-                            <div class="row">
-                              <div class="col-4 text-center"><i data-feather="file-text"></i></div>
-                              <div class="col-4 text-center"><i data-feather="activity"></i></div>
-                              <div class="col-4 text-center"><i data-feather="users"></i></div>
-                              <div class="col-4 text-center"><i data-feather="clipboard"></i></div>
-                              <div class="col-4 text-center"><i data-feather="anchor"></i></div>
-                              <div class="col-4 text-center"><i data-feather="settings"></i></div>
-                            </div>
-                          </li>
-                          <li class="text-center">
-                            <button class="flip-btn" id="flip-btn">Add New Bookmark</button>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="back">
-                        <ul>
-                          <li>
-                            <div class="droplet-dropdown bookmark-dropdown flip-back-content">
-                              <input type="text" placeholder="search...">
-                            </div>
-                          </li>
-                          <li>
-                            <button class="d-block flip-back" id="flip-back">Back</button>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
+              <li>
+                <span class="header-search"><i data-feather="search"></i></span></li>
               <li>
                 <div class="mode"><i class="fa fa-moon-o"></i></div>
               </li>
@@ -215,7 +171,7 @@
                   </li>
                   
                   
-                  <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#"><i data-feather="list"> </i><span>Контакты</span></a></li>
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{% url 'contacts' %}"><i data-feather="list"> </i><span>Контакты</span></a></li>
                 
                   <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#"><i data-feather="sunrise"> </i><span>База знаний</span></a></li>
                   

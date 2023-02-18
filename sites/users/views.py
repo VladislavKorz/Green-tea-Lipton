@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from users.forms import CustomAuthenticationForm
 from django.contrib.auth.decorators import login_required
-
+from .models import Profile
 
 
 class LoginView(View):
@@ -49,3 +49,11 @@ def AccountView(request):
         'profile': profile
     }
     return render(request, 'users/profile.html', context)
+
+@login_required
+def ContactsView(request):
+    context = {
+        'title': 'Контакты',
+        'contactAll': Profile.objects.all()
+    }
+    return render(request, 'users/contacts.html', context)

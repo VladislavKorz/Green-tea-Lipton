@@ -10,11 +10,13 @@
 
 
 {% block body %}
-<div class="container-fluid">
+<div class="container-fluid p-3">
   <div class="row">
     <div class="col-sm-12">
-        <h2> Hellooo </h2>
-        <p>{{ level }}</p>
+        <h2> {{ level.title }} </h2>
+    </div>
+    <div class="col-sm-12">
+        {{ level.text |safe }}
     </div>
   </div>
 </div>
