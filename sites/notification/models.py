@@ -20,6 +20,6 @@ class Notification(models.Model):
 class NotificationUser(models.Model):
     user = models.ForeignKey("users.Profile", verbose_name="", on_delete=models.CASCADE)
     notification = models.ForeignKey("notification.Notification", verbose_name="", on_delete=models.CASCADE)
-    send_datetime = models.DateTimeField("", auto_now=False, auto_now_add=False)
-    send_status = models.BooleanField("")
-    create = models.DateTimeField("", auto_now=False, auto_now_add=True)
+    send_datetime = models.DateTimeField("Дата отправки", auto_now=False, auto_now_add=False)
+    send_status = models.BooleanField("Статус отправки", default=True)
+    create = models.DateTimeField("Дата создания", auto_now=False, auto_now_add=True)

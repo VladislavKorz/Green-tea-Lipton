@@ -4,14 +4,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from users.forms import CustomAuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 
 
 class LoginView(View):
+    
     def get(self, request, *args, **kwargs):
         form = CustomAuthenticationForm()
         return render(request, 'users/login.html', {'form': form})
 
+    
     def post(self, request, *args, **kwargs):
         form = CustomAuthenticationForm(data=request.POST)
         
@@ -23,19 +26,26 @@ class LoginView(View):
         else:
             return render(request, 'users/login.html', {'form': form})
 
-        return redirect('account')
+        return redirect('profile')
 
 class LogoutView(View):
+    
     def get(self, request, *args, **kwargs):
         logout(request)
-        return redirect('login-form')
+        return redirect('login')
 
+    
     def post(self, request, *args, **kwargs):
         pass
 
-class AccountView(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse(f'{request.user}')
-
-    def post(self, request, *args, **kwargs):
-        return HttpResponse('POST request!')
+@login_required
+def AccountView(request):
+    if request.user:
+        profile = request.user.profile
+    else:
+        profile = None
+    context = {
+        'title': 'Профиль пользователя',
+        'profile': profile
+    }
+    return render(request, 'users/profile.html', context)
