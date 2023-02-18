@@ -8,6 +8,7 @@ from django.views import View
 from users.forms import CustomAuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from django.core.cache import cache
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -19,10 +20,7 @@ class LoginView(View):
             'title':'Логин',
             'form':form,
         }
-        try:
-            context['user_id'] = kwargs['user_id']
-        except:
-            pass
+        
         return render(request, 'users/login.html', {'form': form})
 
     
@@ -36,7 +34,13 @@ class LoginView(View):
             login(request, new_user)
         else:
             return render(request, 'users/login.html', {'form': form})
-
+        try:
+            user_id = cache.get(user_id)
+            current_user = request.user
+            current_user.profile.telegram_id = user_id
+            current_user.save()
+        except:
+            pass
         return redirect('profile')
 
 class LogoutView(View):
@@ -80,5 +84,5 @@ def sync(request,user_id):
         current_user.profile.telegram_id = user_id
         current_user.save()
         return redirect("profile")
-    
+    cache.set('user_id', user_id, 300)
     return redirect("profile")
