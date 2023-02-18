@@ -23,3 +23,5 @@ class NotificationUser(models.Model):
     send_datetime = models.DateTimeField("Дата отправки", auto_now=False, auto_now_add=False)
     send_status = models.BooleanField("Статус отправки", default=True)
     create = models.DateTimeField("Дата создания", auto_now=False, auto_now_add=True)
+
+    

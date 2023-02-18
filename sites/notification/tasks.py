@@ -7,6 +7,6 @@ def absence(Profile_Pk):
     now = datetime.now().date()
     print(profile)
     last_occurrence = profile.user.last_login.date()
-    logger.debug(profile.user.last_login)
+    logger.debug(last_occurrence)
     absence_time = now - last_occurrence
     return absence_time
