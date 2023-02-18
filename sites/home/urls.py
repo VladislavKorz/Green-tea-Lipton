@@ -3,4 +3,6 @@ from home.views import *
 
 urlpatterns = [
     path('', index ,name='index'),
+    path('calendar/', calendar, name='calendar'),
+
 ]
