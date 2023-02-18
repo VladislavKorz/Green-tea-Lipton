@@ -19,8 +19,7 @@ class guideAction(models.Model):
         verbose_name = 'Карта'
 
     def get_absolute_url(self):
-        return "#"
-        # return reverse("model_detail", kwargs={"pk": self.pk})
+        return reverse("roadMapsSingle", kwargs={"pk": self.pk})
     
 
     def save(self, *args, **kwargs):
