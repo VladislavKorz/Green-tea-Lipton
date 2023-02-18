@@ -129,7 +129,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+ABSOLUTE_URL = 'http://127.0.0.1:8000'
 STATIC_URL = '/static/'
 
 LOGIN_URL = "/account/login/"

@@ -1,3 +1,5 @@
+from django.shortcuts import render
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -6,12 +8,21 @@ from django.views import View
 from users.forms import CustomAuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from django.views.decorators.csrf import csrf_exempt
 
 
 class LoginView(View):
     
     def get(self, request, *args, **kwargs):
         form = CustomAuthenticationForm()
+        context = {
+            'title':'Логин',
+            'form':form,
+        }
+        try:
+            context['user_id'] = kwargs['user_id']
+        except:
+            pass
         return render(request, 'users/login.html', {'form': form})
 
     
@@ -50,9 +61,7 @@ def AccountView(request):
     }
     return render(request, 'users/profile.html', context)
 
-def sync(request):
-    return render(request,'users/sync.html')
-    
+
 @login_required
 def ContactsView(request):
     context = {
@@ -60,3 +69,14 @@ def ContactsView(request):
         'contactAll': Profile.objects.all()
     }
     return render(request, 'users/contacts.html', context)
+
+
+def sync(request,user_id):
+    user_id = user_id.replace('%20','')
+    if request.user.is_authenticated:
+        current_user = request.user
+        current_user.profile.telegram_id = user_id
+        current_user.save()
+        return redirect("profile")
+    
+    return redirect("profile")
