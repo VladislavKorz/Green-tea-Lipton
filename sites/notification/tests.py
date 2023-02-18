@@ -1,5 +1,5 @@
 from django.test import TestCase
 from tasks import *
-from users.models import Profile 
-print(absence())
+
+print(absence(1))
 # Create your tests here.
