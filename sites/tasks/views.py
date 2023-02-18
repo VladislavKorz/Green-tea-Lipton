@@ -3,8 +3,9 @@ from .models import Task, Column
 
 
 def task_list(request):
+    title = "Менеджер задач"
     columns = Column.objects.all()
-    return render(request, 'tasks/task_list.html', {'columns': columns})
+    return render(request, 'tasks/task_list.html', {'title':title, 'columns': columns})
 
 def task_detail(request, pk):
     task = Task.objects.get(pk=pk)
