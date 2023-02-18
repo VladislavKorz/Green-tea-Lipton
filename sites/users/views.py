@@ -50,6 +50,9 @@ def AccountView(request):
     }
     return render(request, 'users/profile.html', context)
 
+def sync(request):
+    return render(request,'users/sync.html')
+    
 @login_required
 def ContactsView(request):
     context = {
