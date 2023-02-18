@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block body %}
+<link rel="stylesheet" href="{% static 'css/assets/vendors/jkanban.css' %}">
 <h1>Tasks</h1>
 <ul>
   {% for task in tasks %}
@@ -18,7 +19,7 @@
           <h5>Default Demo</h5>
         </div>
         <div class="card-body">
-          <div id="demo1" style=" display: flex;">
+          <div id="kanban-box-id" style=" display: flex;">
             <div class="kanban-container" style="width: 1290px;">
               
             </div>
@@ -33,5 +34,59 @@
 
 {% block script %}
 <script src="{% static 'js/assets/jkanban/jkanban.js' %}"></script>
-<script src="{% static 'js/assets/jkanban/custom.js' %}"></script>
+{% comment %} <script src="{% static 'js/assets/jkanban/custom.js' %}"></script> {% endcomment %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var options = {
+        boards: [
+        // {% for col in columns %}
+          {
+            id: 'column-{{col.pk}}',
+            title: '{{col.title}}',
+            item: [
+            // {% for tasks in col.cards.all %}
+            { id: 'item-{{col.pk}}-{{ tasks.pk }}', title: `
+                            <a class="kanban-box" href="#"><span class="date">{{tasks.deadline|date}}</span>
+                              {% if importance == 1 %}
+                              <span class="badge badge-success f-right">Не срочно</span>
+                              {% elif importance == 2 %}
+                              <span class="badge badge-primary f-right">Cрочно</span>
+                              {% elif importance == 3 %}
+                              <span class="badge badge-danger f-right">Очень срочно</span>
+                              {% endif %}
+                            <h6>Design Dashboard</h6>
+                            <div class="media">
+                              <div class="media-body">
+                                <p>{{tasks.description|striptags|truncatechars:45}}</p>
+                              </div>
+                            </div>
+                            <div class="d-flex mt-3">
+                              <ul class="list">
+                                <li><i class="fa fa-comments-o"></i>2</li>
+                                <li><i class="fa fa-paperclip"></i>2</li>
+                                <li><i class="fa fa-eye"></i></i></li>
+                              </ul>
+                              <div class="customers">
+                                <ul>
+                                  <li class="d-inline-block me-3">
+                                    <p class="f-12">+10</p>
+                                  </li>
+                                  <li class="d-inline-block"><img class="img-20 rounded-circle" src="../assets/images/user/3.jpg" alt="" data-original-title="" title=""></li>
+                                  <li class="d-inline-block"><img class="img-20 rounded-circle" src="../assets/images/user/1.jpg" alt="" data-original-title="" title=""></li>
+                                  <li class="d-inline-block"><img class="img-20 rounded-circle" src="../assets/images/user/5.jpg" alt="" data-original-title="" title=""></li>
+                                </ul>
+                              </div>
+                            </div></a>
+                      `
+            },
+            // {% endfor %}
+            ]
+          },
+        // {% endfor %}
+        ]
+      };
+
+      var kanban = new jKanban(Object.assign({}, options, {element: '#kanban-box-id'}));
+    });
+  </script>
 {% endblock %}

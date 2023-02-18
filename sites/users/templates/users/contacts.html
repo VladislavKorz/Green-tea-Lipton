@@ -20,8 +20,8 @@
             <div class="card-body">
               <div class="email-app-sidebar left-bookmark">
                 <div class="media">
-                  <div class="media-size-email"><img class="me-3 rounded-circle" src="{{ contact.user.profile.get_photo }}"
-                      alt=""></div>
+                  <div class="media-size-email"><img class="me-3 rounded-circle"
+                      src="{{ contact.user.profile.get_photo }}" alt=""></div>
                   <div class="media-body">
                     <h6 class="f-w-600">{{ request.user.get_full_name }}</h6>
                     {% if user.email %}<p>{{ request.user.email }}</p>{% endif %}
@@ -31,15 +31,25 @@
                 </div>
                 <ul class="nav main-menu contact-options" role="tablist">
                   <li class="nav-item"><span class="main-title"> Группы</span></li>
-                  <li><a id="pills-personal-tab" data-bs-toggle="pill" href="#pills-personal" role="tab"
-                      aria-controls="pills-personal" aria-selected="true"><span class="title"> Все контакты</span></a>
+                  <li>
+                    <a id="pills-personal-tab" data-bs-toggle="pill" href="#pills-personal" role="tab"
+                      aria-controls="pills-personal" aria-selected="true">
+                      <span class="title"> Все контакты</span>
+                    </a>
                   </li>
-                  <li><a class="show" id="pills-organization-tab" data-bs-toggle="pill" href="#pills-organization"
-                      role="tab" aria-controls="pills-organization" aria-selected="false"><span class="title">
-                        Отдел</span></a></li>
-                  <li><a class="show" id="pills-management-tab" data-bs-toggle="pill" href="#pills-management"
-                      role="tab" aria-controls="pills-management" aria-selected="false"><span class="title">
-                        руководство</span></a></li>
+                  <li>
+                    <a class="show" id="pills-organization-tab" data-bs-toggle="pill" href="#pills-organization"
+                      role="tab" aria-controls="pills-organization" aria-selected="false">
+                      <span class="title">Отдел</span>
+                    </a>
+                  </li>
+                  {% if contactManagement %}
+                  <li>
+                    <a class="show" id="pills-management-tab" data-bs-toggle="pill" href="#pills-management" role="tab"
+                      aria-controls="pills-management" aria-selected="false"><span class="title">
+                        руководство</span></a>
+                  </li>
+                  {% endif %}
                 </ul>
               </div>
             </div>
@@ -63,15 +73,19 @@
                           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
                             {% for contact in contactAll %}
-                            <a class="contact-tab-{{forloop.counter0}} nav-link {% if forloop.counter0 == 0 %}active{% endif %}" id="v-pills-user-tab"
-                              data-bs-toggle="pill" onclick="activeDiv({{forloop.counter0}})" href="#v-pills-contact{{ forloop.counter0 }}" role="tab"
+                            <a class="contact-tab-{{forloop.counter0}} nav-link {% if forloop.counter0 == 0 %}active{% endif %}"
+                              id="v-pills-user-tab" data-bs-toggle="pill" onclick="activeDiv({{forloop.counter0}})"
+                              href="#v-pills-contact{{ forloop.counter0 }}" role="tab"
                               aria-controls="v-pills-contact{{ forloop.counter0 }}" aria-selected="true">
-                              <div class="media"><img class="img-50 img-fluid m-r-20 rounded-circle update_img_{{forloop.counter0}}"
+                              <div class="media"><img
+                                  class="img-50 img-fluid m-r-20 rounded-circle update_img_{{forloop.counter0}}"
                                   src="{{ contact.user.profile.get_photo }}" alt="">
                                 <div class="media-body">
-                                  <h6> <span class="first_name_{{forloop.counter0}}">{{contact.user.get_full_name}}</span>
+                                  <h6> <span
+                                      class="first_name_{{forloop.counter0}}">{{contact.user.get_full_name}}</span>
                                   </h6>
-                                  <p class="email_add_{{forloop.counter0}}">{{ contact.user.profile.department.title }}</p>
+                                  <p class="email_add_{{forloop.counter0}}">{{ contact.user.profile.department.title }}
+                                  </p>
                                 </div>
                               </div>
                             </a>
@@ -81,10 +95,13 @@
                         <div class="col-xl-8 xl-50 col-md-7">
                           <div class="tab-content" id="v-pills-tabContent">
                             {% for contact in contactAll %}
-                            <div class="tab-pane contact-tab-{{ forloop.counter0 }} tab-content-child fade {% if forloop.counter0 == 0 %}show active{% endif %}" id='v-pills-contact{{ forloop.counter0 }}'>
+                            <div
+                              class="tab-pane contact-tab-{{ forloop.counter0 }} tab-content-child fade {% if forloop.counter0 == 0 %}show active{% endif %}"
+                              id='v-pills-contact{{ forloop.counter0 }}'>
                               <div class="profile-mail">
                                 <div class="media">
-                                  <img class="img-100 img-fluid m-r-20 rounded-circle update_img_0" src="{{ contact.user.profile.get_photo }}" alt="">
+                                  <img class="img-100 img-fluid m-r-20 rounded-circle update_img_0"
+                                    src="{{ contact.user.profile.get_photo }}" alt="">
                                   <input class="updateimg" type="file" name="img" onchange="readURL(this,0)">
                                   <div class="media-body mt-0">
                                     <h5><span class="first_name_0">{{contact.user.get_full_name}}</span>
@@ -95,10 +112,12 @@
                                 <div class="email-general">
                                   <h6 class="mb-3">Основное</h6>
                                   <ul>
-                                    <li>Имя <span class="font-primary first_name_0">{{contact.user.first_name}}</span></li>
-                                    <li>Фамилия <span class="font-primary first_name_0">{{contact.user.last_name}}</span></li>
-                                    <li>Дата рождения<span class="font-primary"> <span class="birth_day_0">18</span><span
-                                          class="birth_month_0 ms-1">Мая</span><span
+                                    <li>Имя <span class="font-primary first_name_0">{{contact.user.first_name}}</span>
+                                    </li>
+                                    <li>Фамилия <span
+                                        class="font-primary first_name_0">{{contact.user.last_name}}</span></li>
+                                    <li>Дата рождения<span class="font-primary"> <span
+                                          class="birth_day_0">18</span><span class="birth_month_0 ms-1">Мая</span><span
                                           class="birth_year_0 ms-1">1994</span></span></li>
                                     <li>Должность<span class="font-primary personality_0">Директор</span></li>
                                     <li>Город<span class="font-primary city_0">Томск</span></li>
@@ -128,9 +147,10 @@
                           <div class="nav flex-column nav-pills" id="v-pills-tab1" role="tablist"
                             aria-orientation="vertical">
                             {% for contact in contactDepartment %}
-                            <a class="nav-link {% if forloop.counter0 == 0 %}active{% endif %}" id="v-pills-{{ forloop.counter0 }}user-tab"
-                              data-bs-toggle="pill" href="#v-pills-{{ forloop.counter0 }}user" role="tab" aria-controls="v-pills-{{ forloop.counter0 }}user"
-                              aria-selected="true">
+                            <a class="nav-link {% if forloop.counter0 == 0 %}active{% endif %}"
+                              id="v-pills-{{ forloop.counter0 }}user-tab" data-bs-toggle="pill"
+                              href="#v-pills-{{ forloop.counter0 }}user" role="tab"
+                              aria-controls="v-pills-{{ forloop.counter0 }}user" aria-selected="true">
                               <div class="media"><img class="img-50 img-fluid m-r-20 rounded-circle"
                                   src="{{ contact.user.profile.get_photo }}" alt="">
                                 <div class="media-body">
@@ -145,7 +165,8 @@
                         <div class="col-xl-8 xl-50 col-md-7">
                           <div class="tab-content" id="v-pills-tabContent1">
                             {% for contact in contactDepartment %}
-                            <div class="tab-pane fade {% if forloop.counter0 == 0 %}show active{% endif %}" id="v-pills-{{ forloop.counter0 }}user" role="tabpanel"
+                            <div class="tab-pane fade {% if forloop.counter0 == 0 %}show active{% endif %}"
+                              id="v-pills-{{ forloop.counter0 }}user" role="tabpanel"
                               aria-labelledby="v-pills-{{ forloop.counter0 }}user-tab">
                               <div class="profile-mail">
                                 <div class="media"><img class="img-100 img-fluid m-r-20 rounded-circle update_img_5"
@@ -238,7 +259,7 @@
                     </div>
                   </div>
                 </div>
-                
+                {% if contactManagement %}
                 <div class="fade tab-pane" id="pills-management" role="tabpanel" aria-labelledby="pills-management">
                   <div class="card mb-0">
                     <div class="card-header d-flex">
@@ -250,9 +271,10 @@
                           <div class="nav flex-column nav-pills" id="v-pills-tab1" role="tablist"
                             aria-orientation="vertical">
                             {% for contact in contactManagement %}
-                            <a class="nav-link {% if forloop.counter0 == 0 %}active{% endif %}" id="v-pills-{{ forloop.counter0 }}user-tab"
-                              data-bs-toggle="pill" href="#v-pills-{{ forloop.counter0 }}user" role="tab" aria-controls="v-pills-{{ forloop.counter0 }}user"
-                              aria-selected="true">
+                            <a class="nav-link {% if forloop.counter0 == 0 %}active{% endif %}"
+                              id="v-pills-{{ forloop.counter0 }}user-tab" data-bs-toggle="pill"
+                              href="#v-pills-{{ forloop.counter0 }}user" role="tab"
+                              aria-controls="v-pills-{{ forloop.counter0 }}user" aria-selected="true">
                               <div class="media"><img class="img-50 img-fluid m-r-20 rounded-circle"
                                   src="{{ contact.user.profile.get_photo }}" alt="">
                                 <div class="media-body">
@@ -267,7 +289,8 @@
                         <div class="col-xl-8 xl-50 col-md-7">
                           <div class="tab-content" id="v-pills-tabContent1">
                             {% for contact in contactManagement %}
-                            <div class="tab-pane fade {% if forloop.counter0 == 0 %}show active{% endif %}" id="v-pills-{{ forloop.counter0 }}user" role="tabpanel"
+                            <div class="tab-pane fade {% if forloop.counter0 == 0 %}show active{% endif %}"
+                              id="v-pills-{{ forloop.counter0 }}user" role="tabpanel"
                               aria-labelledby="v-pills-{{ forloop.counter0 }}user-tab">
                               <div class="profile-mail">
                                 <div class="media"><img class="img-100 img-fluid m-r-20 rounded-circle update_img_5"
@@ -360,7 +383,7 @@
                     </div>
                   </div>
                 </div>
-                
+                {% endif %}
               </div>
             </div>
           </div>
