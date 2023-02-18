@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Список вопросов и ответов</h1>
+  {% if faqs %}
+    <ul>
+      {% for faq in faqs %}
+        <li><a href="{% url 'faq_detail' faq.id %}">{{ faq.question }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Нет вопросов и ответов.</p>
+  {% endif %}
+{% endblock %}

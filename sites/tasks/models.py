@@ -32,3 +32,5 @@ class Comment(models.Model):
         ordering = ['task']
         verbose_name = 'Коментарий'
         verbose_name_plural = 'Коментарии'
+    
+    
