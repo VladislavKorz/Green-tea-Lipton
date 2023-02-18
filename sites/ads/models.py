@@ -2,7 +2,7 @@ from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 
 class Advertisement(models.Model):
-    photo = models.ImageField("Картинка", upload_to="ads/photo")
+    photo = models.ImageField("Картинка", upload_to="ads/photo", null=True)
     title = models.CharField('Заголовок',max_length=255)
     description = CKEditor5Field('Описание',null=True)
     importance = models.IntegerField('Важность',choices=((1, 'Low'), (2, 'Medium'), (3, 'High')), default=1)
