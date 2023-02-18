@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'dashboard',
     'home',
     'users',
+    'tasks',
+
 ]
 
 MIDDLEWARE = [
