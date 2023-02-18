@@ -2,6 +2,62 @@
 {% load static %}
 
 {% block body %}
+{% if results %}
+<div class="container">
+  <div class="xl-100 box-col-6">
+    <div class="card bg-primary">
+      <div class="card-body">
+        <div class="media faq-widgets">
+          <div class="media-body">
+            <h5>Ответы на самые популярные вопросы</h5>
+            <p>Здесь вы найдете ответы на все самые популярные вопросы, которые возникали у Ваших колег, когда они были
+              на вашем месте:).</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-file-text">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row default-according style-1 faq-accordion" id="accordionoc">
+      <div class="col-xl-8 xl-60 col-lg-6 col-md-7">
+        {% for el in results %}
+        <div class="card">  
+          <div class="card-header">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed ps-0" data-bs-toggle="collapse"
+                data-bs-target="#collapseicon{{el.pk}}" aria-expanded="false"
+                aria-controls="collapseicon{{el.pk}}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-help-circle">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                  <line x1="12" y1="17" x2="12" y2="17"></line>
+                </svg>
+                {{el.question|safe}}
+              </button>
+            </h5>
+          </div>
+          <div class="collapse" id="collapseicon{{el.pk}}" aria-labelledby="collapseicon{{cat.pk}}{{el.pk}}"
+            data-bs-parent="#accordionoc">
+            <div class="card-body">{{el.answer|safe}}</div>
+          </div>
+        </div>
+      
+{% endfor %} 
+    </div>
+  
+{%else%}
+
 <div class="container">
   <div class="xl-100 box-col-6">
     <div class="card bg-primary">
@@ -58,12 +114,9 @@
         {% endfor %}
         {% endfor %}
       </div>
-
+      {% endif %}
       <div class="col-xl-4 xl-40 col-lg-6 col-md-5">
         <div class="row">
-          <div class="col-lg-12">
-
-          </div>
           <div class="col-lg-12">
             <div class="card card-mb-faq">
               <div class="card-header faq-header">
