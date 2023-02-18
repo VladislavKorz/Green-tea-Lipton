@@ -33,9 +33,13 @@ class LogoutView(View):
     def post(self, request, *args, **kwargs):
         pass
 
-class AccountView(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse(f'{request.user}')
-
-    def post(self, request, *args, **kwargs):
-        return HttpResponse('POST request!')
+def AccountView(request):
+    if request.user:
+        profile = request.user.profile
+    else:
+        profile = None
+    context = {
+        'title': 'Профиль пользователя',
+        'profile': profile
+    }
+    return render(request, 'users/profile.html', context)
