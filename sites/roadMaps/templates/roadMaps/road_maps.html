@@ -14,9 +14,13 @@
       <div class="circle-container">
         {% for obj in mapObj %}
             {% if obj.bigBox %}
-            <div class="circle">{{ obj.order_count }}</div>
+            <a href="{{ obj.get_absolute_url }}" class="open-iframe">
+              <div class="circle">{{ obj.order_count }}</div>
+            </a>
             {% else %}
-            <div class="small-circle">{{ obj.order_count }}</div>
+            <a href="{{ obj.get_absolute_url }}" class="open-iframe">
+              <div class="small-circle">{{ obj.order_count }}</div>
+            </a>
             {% endif %}
         {% endfor %}
       </div>
