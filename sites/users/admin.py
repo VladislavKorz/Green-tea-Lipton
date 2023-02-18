@@ -3,7 +3,7 @@ from users.models import *
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'user', 'rols', 'phone', 'telegram_id')
+    list_display = ('pk', 'user', 'rols', 'phone', 'telegram_id','city','post')
 
 
 @admin.register(Department)

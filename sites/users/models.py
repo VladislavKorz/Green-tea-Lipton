@@ -21,6 +21,8 @@ class Profile(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     photo = models.ImageField("Фото", upload_to="image/profile/photo/", null=True)
+    city = models.CharField('Город',max_length=200)
+    post = models.CharField('Должность',max_length=200)
     department = models.ForeignKey(Department, verbose_name="Отдел", on_delete=models.CASCADE, null=True)
     rols = models.CharField(max_length=10, choices=ROLS_CHOICES, default="NC")
     phone = models.CharField(max_length=20, default='-')
@@ -28,7 +30,7 @@ class Profile(models.Model):
     birthday = models.DateField("День рождение", auto_now=False, auto_now_add=False, null=True)
     start_work = models.DateField("Старт работы в компании испытательного срока", auto_now=False, auto_now_add=False, null=True)
     end_probation = models.DateField("Окончание испытательного срока", auto_now=False, auto_now_add=False, null=True)
-
+    
     def __str__(self):
         return self.user.get_full_name()
 
