@@ -9,12 +9,12 @@ from django.contrib.auth.decorators import login_required
 
 
 class LoginView(View):
-    @login_required
+    
     def get(self, request, *args, **kwargs):
         form = CustomAuthenticationForm()
         return render(request, 'users/login.html', {'form': form})
 
-    @login_required
+    
     def post(self, request, *args, **kwargs):
         form = CustomAuthenticationForm(data=request.POST)
         
