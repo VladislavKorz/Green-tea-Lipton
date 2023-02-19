@@ -9,7 +9,33 @@
 
 
 {% block body %}
-
+    <div class="row">
+      {% for kn in listObj  %}
+      <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
+        <div class="card">
+          <div class="blog-box blog-grid text-center product-box">
+            <div class="product-img">
+              <img class="img-fluid top-radius-blog" src="{{kn.photo}}" alt="" style="height: 400px; object-fit: cover; overflow: hidden;">
+              <div class="product-hover">
+                <ul>
+                  <a href="{{kn.file}}" target="_blank"><li><i class="fa fa-cloud-download"></i></li></a>
+                </ul>
+              </div>
+            </div>
+            <div class="blog-details-main">
+              <ul class="blog-social">
+                <li>{{kn.created_at}}</li>
+                <li>{{kn.created_by}}</li>
+              </ul>
+              <hr>
+              <h6 class="blog-bottom-details" style=" min-height: 330px; ">{{kn.description|safe}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+  
 
 
 {% endblock body %}
