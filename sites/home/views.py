@@ -45,8 +45,9 @@ def error_500(request):
 @login_required
 def ratings(request):
     users = Profile.objects.filter(rols='NC')
-    print(users)
-    return render(request, 'home/ratings.html', {'users':users})
+    context = {'title':'Рейтинг',
+                'users': users}
+    return render(request, 'home/ratings.html', context = context)
 
 @login_required
 def feedback(request):
