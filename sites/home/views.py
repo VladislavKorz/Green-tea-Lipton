@@ -12,7 +12,13 @@ def index(request):
     context = {
         'title': "Привет",
     }
-    return render(request,'home/dashboard.html', context)
+    if request.user.profile.rols == 'DIR':
+        return render(request,'home/dashboard.html', context)
+    if request.user.profile.rols == 'HR':
+        return render(request,'home/dashboard.html', context)
+    else:
+        return render(request,'home/dashboard.html', context)
+    
 
 @login_required
 def calendar(request):
