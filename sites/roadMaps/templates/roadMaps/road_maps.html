@@ -14,7 +14,7 @@
 {% block body %}
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12" style=" overflow-y: auto; max-height: 65vh; ">
       <div class="card">
         <div class="card-body">
           <section class="cd-container" id="cd-timeline">
@@ -23,7 +23,7 @@
             <div class="cd-timeline-block">
               <div class="cd-timeline-img cd-picture {% if date %}bg-success{% else %}bg-primary{% endif %}">
                 {% if date %}
-                  <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
                 {% else %}
                 <a href="{% url 'roadMapsComplied' obj.pk %}">
                   <i class="fa fa-star-o"></i>
