@@ -2,10 +2,13 @@
 from django.shortcuts import render
 from .models import KnowledgeBase
 
+# Общее!!!!!!!!!!
 
-def KnowledgeBase(request):
+def KnowledgeBaseViews(request):
     context = {
-        'title': "Обьявления",
+        'title': "База знаний",
+        # 'listObj': KnowledgeBase.objects.filter(category=request.user.profile.department)
+        'listObj': KnowledgeBase.objects.all()
     }
     return render(request,'KnowledgeBase/knowledgebase.html', context)
 

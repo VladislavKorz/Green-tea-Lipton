@@ -4,6 +4,7 @@ from faker import Faker
 import random
 from datetime import date, timedelta
 
+
 def generate_random_data():
     fake = Faker('ru_RU')
     
@@ -32,4 +33,6 @@ def generate_random_data():
     # возвращаем словарь с сгенерированными данными
     return {'first_name': name, 'last_name': last_name, 'email': email, 'position': position, 'city': city, 'birth_date': birth_date}
 
-logger.debug(str(generate_random_data()))
+
+
+
