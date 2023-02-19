@@ -5,7 +5,7 @@ from faq.models import FAQ
 from django.contrib.auth.decorators import login_required
 from users.models import Profile
 from notification.management.commands.notificationBot import send_done_message_to_telegram_chat
-
+from django.db.models import Count
 
 @login_required
 def index(request):
@@ -51,7 +51,7 @@ def error_500(request):
 @login_required
 def ratings(request):
     
-    from django.db.models import Count
+    
     nc_users = Profile.objects.filter(rols='NC').annotate(
         guide_action_count=Count('user_guideActions')
     ).order_by('-guide_action_count')
