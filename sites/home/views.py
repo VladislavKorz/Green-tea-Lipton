@@ -47,6 +47,14 @@ def ratings(request):
     users = Profile.objects.filter(rols='NC')
     context = {'title':'Рейтинг',
                 'users': users}
+
+    from django.db.models import Count
+    nc_users = Profile.objects.filter(rols='NC').annotate(
+        guide_action_count=Count('user_guideActions')
+    )
+    for user in nc_users:
+        print(user, user.guide_action_count)
+
     return render(request, 'home/ratings.html', context = context)
 
 @login_required
