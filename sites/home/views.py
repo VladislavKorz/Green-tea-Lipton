@@ -13,9 +13,9 @@ def index(request):
         'title': "Привет",
     }
     if request.user.profile.rols == 'DIR':
-        return render(request,'home/dashboard.html', context)
+        return render(request,'home/dashboardDIR.html', context)
     if request.user.profile.rols == 'HR':
-        return render(request,'home/dashboard.html', context)
+        return render(request,'home/dashboardHR.html', context)
     else:
         return render(request,'home/dashboard.html', context)
     
