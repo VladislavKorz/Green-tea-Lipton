@@ -150,12 +150,12 @@
       <!-- Page Sidebar Start-->
       <div class="sidebar-wrapper">
         <div>
-          <div class="logo-wrapper"><a href="index.html">
+          <div class="logo-wrapper"><a href="{% url 'home' %}">
               <img class="img-fluid for-light" src="{% static 'images/logo.png' %}" alt="" width="180" style="margin-top: -40px;">
               <div class="back-btn"><i class="fa fa-angle-left"></i></div>
 
           </div>
-          <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid"
+          <div class="logo-icon-wrapper"><a href="{% url 'home' %}"><img class="img-fluid"
                 src="../assets/images/logo/logo-icon.png" alt=""></a></div>
           <nav class="sidebar-main">
             <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
@@ -210,7 +210,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>{{ title }}</h3>
+                <h3 style="color: var(--theme-deafult);">{{ title }}</h3>
               </div>
             </div>
           </div>
