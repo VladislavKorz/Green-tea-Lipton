@@ -1,14 +1,41 @@
 <br/>
 <p align="center">
+  <a href="https://github.com/ShaanCoding/ReadME-Generator">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">ReadME Generator</h3>
+
+  <p align="center">
+    An Awesome ReadME Generator To Jumpstart Your Projects!
+    <br/>
+    Note This Project Is Still W.I.P
+    <br/>
+    <br/>
+    <a href="https://readme.shaankhan.dev"><strong>View Demo »</strong></a>
+    <br/>
+    <br/>
+    <a href="https://github.com/ShaanCoding/ReadME-Generator">Explore the docs</a>
+    .
+    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Report Bug</a>
+    .
+    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Request Feature</a>
+  </p>
+</p>
+
+![Downloads](https://img.shields.io/github/downloads/ShaanCoding/ReadME-Generator/total) ![Contributors](https://img.shields.io/github/contributors/ShaanCoding/ReadME-Generator?color=dark-green) ![Issues](https://img.shields.io/github/issues/ShaanCoding/ReadME-Generator) ![License](https://img.shields.io/github/license/ShaanCoding/ReadME-Generator) [![Discord](https://img.shields.io/discord/199663269106024449)](https://discord.gg/6Kf422a)
+
+<br/>
+<p align="center">
   <a href="https://github.com/VladislavKorz/Green-tea-Lipton">
     <img src="" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">test
+  <h3 align="center">Readme file
 </h3>
 
   <p align="center">
-    An Awesome ReadME Generator To Jumpstart Your Projects!
+    Файл, содержащий информацию о сервисе
     <br/>
     <br/>
     <a href="https://github.com/VladislavKorz/Green-tea-Lipton"><strong>Explore the docs »</strong></a>
@@ -22,115 +49,91 @@
   </p>
 </p>
 
-![Downloads](https://img.shields.io/github/downloads/VladislavKorz/Green-tea-Lipton/total) ![Contributors](https://img.shields.io/github/contributors/VladislavKorz/Green-tea-Lipton?color=dark-green) ![Issues](https://img.shields.io/github/issues/VladislavKorz/Green-tea-Lipton) ![License](https://img.shields.io/github/license/VladislavKorz/Green-tea-Lipton) 
+![Contributors](https://img.shields.io/github/contributors/VladislavKorz/Green-tea-Lipton?color=dark-green) 
 
-## Table Of Contents
+## Содержание
 
-* [About the Project](#about-the-project)
-* [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Authors](#authors)
-* [Acknowledgements](#acknowledgements)
+* [Что реализовано](#about-the-project)
+* [Сделано при помощи](#built-with)
+* [Доступ к системе](#getting-started)
+* [Установка и запуск](#prerequisites)
 
-## About The Project
+## Что реализовано
 
-![Screen Shot](images/screenshot.png)
+![Screen Shot](https://rm.qycode.ru)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
+1. Dashboard для Руководителя (Приветствие специалиста / Блок с информацией о Росмолодежь )
+2. Dashboard для HR-специалиста (Приветствие специалиста / Блок с информацией о Росмолодежь )
+3. Dashboard для Стажера (Приветствие стажера / Блок с информацией о Росмолодежь / Информация о процессе обучения и уведомления / календарь с задачами по стажировке)
+4. Карта уровней для стажера с отображением всех чек поинтов (Выполнено - зеленый, Не выполнено - фиолетовый)
+5. Конструктор уровней для HR-ов, возможность добавить/удалить/изменить/переместить уровень, отслеживать движение стажеров по уровням
+6. Профиль пользователя с основной информацией и полученных достижениях
+7. Страниц контактов компании с группировкой по своему отделу / руководителям и возможность сразу отправить им сообщения в мессенджеры
+8. База знаний с возможностью добавить запись/документ для отдельного отдела или сразу всех
+9. Блок FAQ
+10. Поиск по базе знаний и FAQ
+11. Возможность для HR специалиста создавать и настраивать уведомления
+12. Рассылка уведомлений через телеграм бота и на почту
+13. Обратная связь между стажером, hr-ом, руководителем, разработчиками платформы
+14. Рейтинг стажеров по кол-ву выполненных задач
+15. Удобная адаптация под мобильные версии устройств
 
-Here's why:
+## Сделано при помощи
 
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+BackEnd проекта реализован на django с дополнительными библиотеками (Перечень библиотек и их версии доступны в файле requirements.txt)
+FrontEnd проекта реализован при использовании фреймворка bootstrap, и языков: html, css, js
+В демо-проекте для более легкого развертывания используется база данных Sqlite3, в product-версии база данных PostgreSQL
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
+## Доступ к системе
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
-## Built With
+Для доступа к сайту используются следующие аккаунты: Руководитель: Логин: root Пароль: 1111
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+HR Специалист: Логин: root Пароль: 1111
 
-## Getting Started
+Стажер: Логин: root Пароль: 1111
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+## Установка и запуск
 
-### Prerequisites
+Открыть VScode
 
-This is an example of how to list things you need to use the software and how to install them.
+Создать папку, в котором будут храниться необходимые файлы для запуска локального хостинга
 
-* npm
+Открыть терминал
 
-```sh
-npm install npm@latest -g
-```
+Необходимо склоннировать репозиторий в ранее созданную папку по ссылке
+Ввести в терминал команду
+git clone https://github.com/VladislavKorz/Green-tea-Lipton.git
+Нажать Ввод
 
-### Installation
+Ввести в терминал команду
+cd .\Green-tea-Lipton\sites\
+Нажать Ввод
 
-1. Get a free API Key at [https://example.com](https://example.com)
+Ввести в терминал команду
+cd ..
+Нажать Ввод
 
-2. Clone the repo
+Ввести в терминал команду
+pip install -r requirements.txt
+Нажать Ввод
 
-```sh
-git clone https://github.com/your_username_/Project-Name.git
-```
+Необходимо подождать окончания загрузки
 
-3. Install NPM packages
+Ввести в терминал команду 
+cd sites
+Нажать Ввод
 
-```sh
-npm install
-```
+Ввести в терминал команду 
+python manage.py runserver
+Нажать Ввод
 
-4. Enter your API in `config.js`
+В терминале в строке отобразится "Starting development server at"
+Необходимо зажать клавишу Control и кликнуть ЛКМ по адресу в этой строке, который будет в формате "http://1**.*.*.*:8000/"
 
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
+В браузере откроется сайт на локальном хостинге
 
-## Usage
+Приятного пользования
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
-## Roadmap
-
-See the [open issues](https://github.com/VladislavKorz/Green-tea-Lipton/issues) for a list of proposed features (and known issues).
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/VladislavKorz/Green-tea-Lipton/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
-* Please make sure you check your spelling and grammar.
-* Create individual PR for each suggestion.
-* Please also read through the [Code Of Conduct](https://github.com/VladislavKorz/Green-tea-Lipton/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
-
-### Creating A Pull Request
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-Distributed under the MIT License. See [LICENSE](https://github.com/VladislavKorz/Green-tea-Lipton/blob/main/LICENSE.md) for more information.
-
-## Authors
-
-* **Shaan Khan** - *Comp Sci Student* - [Shaan Khan](https://github.com/ShaanCoding/) - *Built ReadME Template*
-
-## Acknowledgements
-
-* [ShaanCoding](https://github.com/ShaanCoding/)
-* [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
-* [ImgShields](https://shields.io/)

@@ -12,7 +12,13 @@ def index(request):
     context = {
         'title': "Привет",
     }
-    return render(request,'home/dashboard.html', context)
+    if request.user.profile.rols == 'DIR':
+        return render(request,'home/dashboardDIR.html', context)
+    if request.user.profile.rols == 'HR':
+        return render(request,'home/dashboardHR.html', context)
+    else:
+        return render(request,'home/dashboard.html', context)
+    
 
 @login_required
 def calendar(request):
@@ -44,9 +50,16 @@ def error_500(request):
 
 @login_required
 def ratings(request):
-    users = Profile.objects.filter(rols='NC')
-    context = {'title':'Рейтинг',
-                'users': users}
+    
+    from django.db.models import Count
+    nc_users = Profile.objects.filter(rols='NC').annotate(
+        guide_action_count=Count('user_guideActions')
+    ).order_by('-guide_action_count')
+    
+    print(nc_users)
+    context = {'title': 'Рейтинг',
+               'users': nc_users}
+
     return render(request, 'home/ratings.html', context = context)
 
 @login_required

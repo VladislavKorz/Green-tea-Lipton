@@ -7,212 +7,344 @@
 {% endblock head %}
 
 {%block body%}
-<!-- Container-fluid starts-->
 <div class="container-fluid">
-  <!-- Chart widget top Start-->
-  <div class="row">
-    <div class="col-xl-4 col-md-12 box-col-12">
-      <div class="card o-hidden">
-        <div class="chart-widget-top">
-          <div class="row card-body">
-            <div class="col-5">
-              <h6 class="f-w-600 font-primary">Количество стажеров, принятых на работу в определенный период времени</h6><span class="num"><span class="counter">90</span>%<i
-                  class="icon-angle-up f-12 ms-1"></i></span>
+   <div class="row">
+      <div class="col-md-3 morning-sec box-col-12">
+         <div class="card o-hidden profile-greeting"
+            style="background: linear-gradient(26deg, var(--theme-deafult) 0%, #a26cf8 100%);">
+            <div class="card-body">
+               <div class="media">
+                  <div class="badge-groups w-100">
+                     <div class="badge f-12"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                           stroke-linejoin="round" class="feather feather-clock me-1">
+                           <circle cx="12" cy="12" r="10"></circle>
+                           <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg><span id="txt">
+                           <div id="time"></div>
+                        </span></div>
+                     <div class="badge f-12"></div>
+                  </div>
+               </div>
+               <div class="greeting-user text-center">
+                  <div class="profile-vector"><img class="img-fluid w-20" src="{{request.user.profile.get_photo}}"
+                        style=" max-width: 150px; "></div>
+                  <h4 class="f-w-600"><span id="greeting">Добрый день</span> <span class="right-circle">,
+                        {{request.user}} <i class="fa fa-check-circle f-14 middle"></i></span></h4>
+                  <div class="whatsnew-btn"><a class="btn btn-primary" href="{% url 'task_list' %} ">Перейти к
+                        задачам</a></div>
+               </div>
             </div>
-            <div class="col-7 text-end">
-              <h4 class="num total-value"> <span class="counter">100 </span></h4>
-            </div>
-          </div>
-          <div>
-            <div id="chart-widget1"></div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-    <div class="col-xl-4 col-md-12 box-col-12">
-      <div class="card o-hidden">
-        <div class="chart-widget-top">
-          <div class="row card-body">
-            <div class="col-7">
-              <h6 class="f-w-600 font-secondary">Количество стажеров не прошедших испытательный срок</h6><span class="num"><span class="counter">30</span>%<i
-                  class="icon-angle-up f-12 ms-1"></i></span>
+      <div class="col-md-9">
+         <div class="card offer-box">
+            <div class="card-body p-0">
+               <div class="offer-slider">
+                  <div class="carousel slide" id="carouselExampleCaptions" data-bs-ride="carousel">
+                     <div class="carousel-inner">
+                        <div class="carousel-item carousel-item-box  active">
+                           <img src="{% static '/images/slider/page-0001.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                        <div class="carousel-item carousel-item-box ">
+                           <img src="{% static '/images/slider/page-0007.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                        <div class="carousel-item carousel-item-box ">
+                           <img src="{% static '/images/slider/page-0002.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                        <div class="carousel-item carousel-item-box ">
+                           <img src="{% static '/images/slider/page-0002.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                        <div class="carousel-item carousel-item-box ">
+                           <img src="{% static '/images/slider/page-0003.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                        <div class="carousel-item carousel-item-box ">
+                           <img src="{% static '/images/slider/page-0004.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                        <div class="carousel-item carousel-item-box ">
+                           <img src="{% static '/images/slider/page-0005.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                        <div class="carousel-item carousel-item-box ">
+                           <img src="{% static '/images/slider/page-0006.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                        <div class="carousel-item carousel-item-box ">
+                           <img src="{% static '/images/slider/page-0008.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                        <div class="carousel-item carousel-item-box ">
+                           <img src="{% static '/images/slider/page-0009.jpg' %}" class="d-block w-100" alt="Слайдер">
+                        </div>
+                     </div>
+                     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev"
+                        data-bs-original-title="" title="">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span><span
+                           class="sr-only">Previous</span>
+                     </a>
+                     <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next"
+                        data-bs-original-title="" title="">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                     </a>
+                  </div>
+               </div>
             </div>
-            <div class="col-5 text-end">
-              <h4 class="num total-value counter">30</h4>
-            </div>
-          </div>
-          <div id="chart-widget2">
-            <div class="flot-chart-placeholder" id="chart-widget-top-second"></div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-    <div class="col-xl-4 col-md-12 box-col-12">
-      <div class="card o-hidden">
-        <div class="chart-widget-top">
-          <div class="row card-body">
-            <div class="col-8">
-              <h6 class="f-w-600 font-success">Количество стажеров прошедших испытательный срок</h6><span class="num"><span class="counter">68</span>%<i
-                  class="icon-angle-up f-12 ms-1"></i></span>
+      <div class="col-xl-7 risk-col notification xl-100 box-col-12">
+         <div class="card total-users">
+            <div class="card-header card-no-border">
+               <h5>Процесс обучения</h5>
             </div>
-            <div class="col-4 text-end">
-              <h4 class="num total-value"><span class="counter">40</span></h4>
+            <div class="card-body pt-0">
+               <div class="apex-chart-container goal-status text-center row">
+                  <div class="rate-card col-xl-12">
+                     <div class="row">
+                        <div class="col-md-3">
+                           <div class="goal-chart" style="position: relative;">
+                              <div id="riskfactorchart" style="min-height: 236.892px;">
+                                 <div id="apexchartsgq63fbah" class="apexcharts-canvas apexchartsgq63fbah light"
+                                    style="width: 274px; height: 236.892px;"><svg id="SvgjsSvg1001" width="274"
+                                       height="236.891845703125" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                       xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"
+                                       class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, -10)"
+                                       style="background: transparent;">
+                                       <g id="SvgjsG1003" class="apexcharts-inner apexcharts-graphical"
+                                          transform="translate(-8.5, 0)">
+                                          <defs id="SvgjsDefs1002">
+                                             <clipPath id="gridRectMaskgq63fbah">
+                                                <rect id="SvgjsRect1004" width="295" height="317" x="-1" y="-1" rx="0"
+                                                   ry="0" fill="#ffffff" opacity="1" stroke-width="0" stroke="none"
+                                                   stroke-dasharray="0"></rect>
+                                             </clipPath>
+                                             <clipPath id="gridRectMarkerMaskgq63fbah">
+                                                <rect id="SvgjsRect1005" width="295" height="317" x="-1" y="-1" rx="0"
+                                                   ry="0" fill="#ffffff" opacity="1" stroke-width="0" stroke="none"
+                                                   stroke-dasharray="0"></rect>
+                                             </clipPath>
+                                             <linearGradient id="SvgjsLinearGradient1011" x1="0" y1="1" x2="1" y2="1">
+                                                <stop id="SvgjsStop1012" stop-opacity="1"
+                                                   stop-color="rgba(242,242,242,1)" offset="0"></stop>
+                                                <stop id="SvgjsStop1013" stop-opacity="1"
+                                                   stop-color="rgba(169,39,249,1)" offset="1"></stop>
+                                                <stop id="SvgjsStop1014" stop-opacity="1"
+                                                   stop-color="rgba(169,39,249,1)" offset="1"></stop>
+                                             </linearGradient>
+                                             <linearGradient id="SvgjsLinearGradient1023" x1="0" y1="1" x2="1" y2="1">
+                                                <stop id="SvgjsStop1024" stop-opacity="1"
+                                                   stop-color="rgba(193,135,87,1)" offset="0"></stop>
+                                                <stop id="SvgjsStop1025" stop-opacity="1"
+                                                   stop-color="rgba(169,39,249,1)" offset="1"></stop>
+                                                <stop id="SvgjsStop1026" stop-opacity="1"
+                                                   stop-color="rgba(169,39,249,1)" offset="1"></stop>
+                                             </linearGradient>
+                                          </defs>
+                                          <g id="SvgjsG1007" class="apexcharts-radialbar">
+                                             <g id="SvgjsG1008">
+                                                <g id="SvgjsG1009" class="apexcharts-tracks">
+                                                   <g id="SvgjsG1010"
+                                                      class="apexcharts-radialbar-track apexcharts-track" rel="1">
+                                                      <path id="apexcharts-radialbarTrack-0"
+                                                         d="M 76.95691039564593 216.04308960435404 A 98.34878048780489 98.34878048780489 0 1 1 216.04308960435407 216.04308960435404"
+                                                         fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)"
+                                                         stroke-opacity="0.4" stroke-linecap="butt"
+                                                         stroke-width="21.713804878048787" stroke-dasharray="0"
+                                                         class="apexcharts-radialbar-area"
+                                                         data:pathOrig="M 76.95691039564593 216.04308960435404 A 98.34878048780489 98.34878048780489 0 1 1 216.04308960435407 216.04308960435404">
+                                                      </path>
+                                                   </g>
+                                                </g>
+                                                <g id="SvgjsG1016">
+                                                   <image id="SvgjsImage1017"
+                                                      xlink:href="{% static 'images/radial-image.png' %}" width="140"
+                                                      height="140" x="76.5" y="76.5"></image>
+                                                   <g id="SvgjsG1022" class="apexcharts-series apexcharts-radial-series"
+                                                      seriesName="Sellingxrate" rel="1" data:realIndex="0">
+                                                      <path id="SvgjsPath1027"
+                                                         d="M 76.95691039564593 216.04308960435404 A 98.34878048780489 98.34878048780489 0 1 1 226.0658347906854 88.69203724831854"
+                                                         fill="none" fill-opacity="0.85"
+                                                         stroke="url(#SvgjsLinearGradient1023)" stroke-opacity="1"
+                                                         stroke-linecap="butt" stroke-width="22.38536585365854"
+                                                         stroke-dasharray="15"
+                                                         class="apexcharts-radialbar-area apexcharts-radialbar-slice-0"
+                                                         data:angle="189" data:value="70" index="0" j="0"
+                                                         data:pathOrig="M 76.95691039564593 216.04308960435404 A 98.34878048780489 98.34878048780489 0 1 1 226.0658347906854 88.69203724831854">
+                                                      </path>
+                                                   </g>
+                                                   <circle id="SvgjsCircle1018" r="82.49187804878049" cx="146.5"
+                                                      cy="146.5" class="apexcharts-radialbar-hollow" fill="transparent">
+                                                   </circle>
+                                                   <g id="SvgjsG1019" class="apexcharts-datalabels-group"
+                                                      transform="translate(0, 0)" style="opacity: 1;"><text
+                                                         id="SvgjsText1020" font-family="Helvetica, Arial, sans-serif"
+                                                         x="146.5" y="146.5" text-anchor="middle"
+                                                         dominant-baseline="auto" font-size="16px" font-weight="regular"
+                                                         fill="#c18757" class="apexcharts-datalabel-label"
+                                                         style="font-family: Helvetica, Arial, sans-serif;">Успешность</text><text
+                                                         id="SvgjsText1021" font-family="Helvetica, Arial, sans-serif"
+                                                         x="146.5" y="178.5" text-anchor="middle"
+                                                         dominant-baseline="auto" font-size="14px" font-weight="regular"
+                                                         fill="#373d3f" class="apexcharts-datalabel-value"
+                                                         style="font-family: Helvetica, Arial, sans-serif;">65%</text>
+                                                   </g>
+                                                </g>
+                                             </g>
+                                          </g>
+                                          <line id="SvgjsLine1028" x1="0" y1="0" x2="293" y2="0" stroke="#b6b6b6"
+                                             stroke-dasharray="0" stroke-width="1" class="apexcharts-ycrosshairs">
+                                          </line>
+                                          <line id="SvgjsLine1029" x1="0" y1="0" x2="293" y2="0" stroke-dasharray="0"
+                                             stroke-width="0" class="apexcharts-ycrosshairs-hidden"></line>
+                                       </g>
+                                    </svg>
+                                    <div class="apexcharts-legend"></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col mx-3">
+                           <div class="goal-end-point">
+                              <ul>
+                                 <li class="mt-0 pt-0">
+                                    <h6 class="mb-2 f-w-400">Всего пройдено</h6>
+                                    <h5 class="mb-0">26/40</h5>
+                                 </li>
+                                 <li>
+                                    <div class="goal-detail">
+                                       <h6> <span class="font-primary">Получено наград: </span>7 из 10</h6>
+                                       <div class="progress sm-progress-bar progress-animate">
+                                          <div class="progress-gradient-primary" role="progressbar" style="width: 60%"
+                                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                       </div>
+                                    </div>
+                                    <div class="goal-detail mb-0">
+                                       <h6><span class="font-primary">Накоплено битов: </span>358 b</h6>
+                                       <div class="progress sm-progress-bar progress-animate">
+                                          <div class="progress-gradient-primary" role="progressbar" style="width: 50%"
+                                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-          </div>
-          <div id="chart-widget3">
-            <div class="flot-chart-placeholder" id="chart-widget-top-third"></div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </div>
-  <!-- Chart widget top Ends-->
-  <!-- Chart widget with bar chart Start-->
-  <div class="row">
-    
-    <div class="col-xl-5 col-md-12 box-col-12">
-      <div class="card o-hidden">
-        <div class="card-header">
-          <h5>Процент стажеров, перешедших на постоянные позиции в компании</h5>
-        </div>
-        <div class="bar-chart-widget">
-          <div class="top-content bg-primary"></div>
-          <div class="bottom-content card-body">
-            <div class="row">
-              <div class="col-12">
-                <div id="chart-widget5"> </div>
-              </div>
+      <div class="col-xl-5 xl-50 notification box-col-6">
+         <div class="card">
+            <div class="card-header card-no-border">
+               <div class="header-top">
+                  <h5 class="m-0">Уведомления</h5>
+               </div>
             </div>
-            <div class="row text-center">
-              <div class="col-4 b-r-light">
-                <div><span
-                    class="text-muted block-bottom">Year</span>
-                  <h4 class="num m-0"><span class="counter color-bottom">2023</span>г</h4>
-                </div>
-              </div>
-              <div class="col-4 b-r-light">
-                <div><span
-                    class="text-muted block-bottom">February</span>
-                  <h4 class="num m-0"><span class="counter color-bottom"></span>M</h4>
-                </div>
-              </div>
-              <div class="col-4">
-                <div><span
-                    class="text-muted block-bottom">Sunday</span>
-                  <h4 class="num m-0"><span class="counter color-bottom">9361</span>M</h4>
-                </div>
-              </div>
+            {% if request.user.profile.get_active_notification %}
+            <div class="card-body pt-0">
+               {% for notif in request.user.profile.get_active_notification %}
+                  <div class="media">
+                     <div class="media-body">
+                        <p>{{notif.send_datetime|date}} <span>{{notif.send_datetime|time}}</span></p>
+                        <h6>{{notif.notification.title}} <span class="dot-notification"></span></h6><span>{{notif.notification.text|safe|truncatechars:90}}</span>
+                     </div>
+                  </div>
+               {% endfor %}
             </div>
-          </div>
-        </div>
+            {% else %}
+            <h4 class="text-center pb-5">✅ Уведомлений нет</h4>
+            {% endif %}
+         </div>
       </div>
-    </div>
-    <div class="col-xl-4 col-lg-12 box-col-6 xl-50">
-      <div class="card">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-9">
-              <h5>Уровень удовлетворенности персонала компании</h5>
+
+      <div class="col-xl-4 col-lg-12 xl-50  box-col-6">
+         <div class="card gradient-primary o-hidden">
+            <div class="card-body">
+               <div class="default-datepicker">
+                  <div class="datepicker-here" data-language="ru"></div>
+               </div>
             </div>
-            <div class="col-3 text-end"><i class="text-muted" data-feather="trending-up"></i></div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="chart-container">
-            <div id="circlechart"></div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-    <div class="col-xl-8 col-lg-12 box-col-6 xl-50">
-      <div class="card">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-9">
-              <h5>Уровень качества найма</h5>
+      <div class="col-xl-8 col-md-12 box-col-12">
+         <div class="email-right-aside bookmark-tabcontent">
+            <div class="card email-body radius-left">
+               <div class="ps-0">
+                  <div class="tab-content" style="height: 500px; overflow-y: auto">
+                     <div class="tab-pane fade active show" id="pills-created" role="tabpanel"
+                        aria-labelledby="pills-created-tab">
+                        <div class="card mb-0">
+                           <div class="card-header d-flex">
+                              <h5 class="mb-0">Задачи</h5>
+                           </div>
+                           <div class="card-body p-0">
+                              <div class="taskadd">
+                                 <div class="table-responsive">
+                                    <table class="table">
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                <h6 class="task_title_0">Встреча</h6>
+                                                <p class="project_name_0">28.02.2023</p>
+                                             </td>
+                                             <td>
+                                                <p class="task_desc_0">Встреча с руководителем и HR</p>
+                                             </td>
+                                             <td>
+                                                <a class="me-2" href="#">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                      viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                      class="feather feather-link">
+                                                      <path
+                                                         d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+                                                      </path>
+                                                      <path
+                                                         d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                                      </path>
+                                                   </svg>
+                                                </a>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <h6 class="task_title_0">Событие</h6>
+                                                <p class="project_name_0">07.03.2023</p>
+                                             </td>
+                                             <td>
+                                                <p class="task_desc_0">Окончание испытательного срока</p>
+                                             </td>
+                                             <td>
+                                                <a class="me-2" href="#">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                      viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                      class="feather feather-link">
+                                                      <path
+                                                         d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+                                                      </path>
+                                                      <path
+                                                         d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                                      </path>
+                                                   </svg>
+                                                </a>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-            <div class="col-3 text-end"><i class="text-muted" data-feather="shopping-bag"></i></div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="chart-container">
-            <div id="progress1"></div>
-            <div id="progress2"></div>
-            <div id="progress3"></div>
-            <div id="progress4"></div>
-            <div id="progress5"> </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </div>
-  <!-- Chart widget with bar chart Ends-->
-  <!-- small widgets Start-->
-  <div class="row">
-    <!-- Live Product chart widget Start-->
-    
-    <!-- Live Product chart widget Ends-->
-    <!-- Turnover chart widget Start-->
-    
-    <!-- Turnover chart widget Ends-->
-    <!-- Monthly Sale chart widget Start-->
-    <div class="xl-50 col-xl-5 col-lg-12">
-      <div class="small-chart-widget chart-widgets-small">
-        <div class="card">
-          <div class="card-header">
-            <h5>Приток персонала в компанию по месяцам </h5>
-            <div class="card-header-right">
-              <ul class="list-unstyled card-option">
-                <li><i class="fa fa-spin fa-cog"></i></li>
-                <li><i class="view-html fa fa-code"></i></li>
-                <li><i class="icofont icofont-maximize full-card"></i></li>
-                <li><i class="icofont icofont-minus minimize-card"></i></li>
-                <li><i class="icofont icofont-refresh reload-card"></i></li>
-                <li><i class="icofont icofont-error close-card"></i></li>
-              </ul>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="chart-container">
-              <div class="row">
-                <div class="col-12">
-                  <div id="chart-widget8"></div>
-                </div>
-              </div>
-            </div>
-            <div class="code-box-copy">
-              <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head2" title="Copy"><i
-                  class="icofont icofont-copy-alt"></i></button>
-              <pre><code class="language-html" id="example-head2">&lt;!-- Cod Box Copy begin --&gt;
-&lt;div class="chart-container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-12"&gt;
-      &lt;div id="chart-widget8"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- Cod Box Copy end --&gt;</code></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Monthly Sale chart widget Ends-->
-    <!-- Uses chart widget Start-->
-    
-    <!-- Uses chart widget Ends-->
-    <!-- small widgets Ends-->
-    <!-- Browser uses and website visiter widget Start-->
-  </div>
-  <div class="row">
-    <!-- browser uses widget chart Start-->
-    
-    <!-- browser uses widget chart Endss-->
-    <!-- status widget Start-->
-  
-  <!-- status widget Ends-->
+
+   </div>
 </div>
-<!-- Container-fluid Ends-->
+
 {%endblock body%}
 
 {%block script%}
@@ -222,42 +354,36 @@
 <script src="{%static 'js/assets/datepicker/date-picker/datepicker.custom.js' %}"></script>
 <script src="{%static 'js/assets/chart/apex-chart/apex-chart.js' %}"></script>
 <script src="{%static 'js/assets/chart/apex-chart/stock-prices.js' %}"></script>
-<script src="{%static 'js/assets/moment.min.js' %}"></script>
-<script src="{%static 'js/assets/jquery.waypoints.min.js' %}"></script>
-<script src="{%static 'js/assets/jquery.counterup.min.js' %}"></script>
-<script src="{%static 'js/assets/chart-widget.js' %}"></script>
-<script src="{%static 'js/assets/counter-custom.js' %}"></script>
-<script src="{%static 'js/assets/customizer.js' %}"></script>
 
 <script>
-  function checkTime(i) {
-    if (i < 10) {
-      i = "0" + i;
-    }
-    return i;
-  }
+   function checkTime(i) {
+      if (i < 10) {
+         i = "0" + i;
+      }
+      return i;
+   }
 
-  function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    // add a zero in front of numbers<10
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('time').innerHTML = h + ":" + m;
-    t = setTimeout(function () {
-      startTime()
-    }, 500);
-  }
-  startTime();
+   function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      // add a zero in front of numbers<10
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('time').innerHTML = h + ":" + m;
+      t = setTimeout(function () {
+         startTime()
+      }, 500);
+   }
+   startTime();
 
-  var calendar = $('.datepicker-here');
+   var calendar = $('.datepicker-here');
 
-  calendar.datepicker({
-    onSelect: function (date) {
-      alert('Вы выбрали дату: ' + date);
-    }
-  });
+   calendar.datepicker({
+      onSelect: function (date) {
+         alert('Вы выбрали дату: ' + date);
+      }
+   });
 </script>
 {% endblock script %}
