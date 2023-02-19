@@ -1,0 +1,7 @@
+.carousel-item-box img{
+    max-height: 418px;
+    object-fit: cover;
+    object-position: center top;
+    overflow: hidden;
+    border-radius: 15px;
+}

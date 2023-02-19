@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from home.views import error_404,error_500
+
+handler404 = error_404
+handler500 = error_500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +32,5 @@ urlpatterns = [
     path('tasks/', include('tasks.urls')),
     path('ads/', include('ads.urls') ),
     path('faq/', include('faq.urls')),
+    path('knowledgebase/', include('knowledgebase.urls')),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

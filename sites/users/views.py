@@ -64,7 +64,13 @@ def AccountView(request):
         'profile': profile
     }
     return render(request, 'users/profile.html', context)
-
+@login_required
+def SettingsView(request):
+    
+    context = {
+        
+    }
+    return render(request, 'users/settings.html', context)
 
 @login_required
 def ContactsView(request):

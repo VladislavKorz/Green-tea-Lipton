@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from notification.management.commands.notificationBot import send_message_to_telegram_chat
 from users.models import Profile
-
+from loguru import logger
 
 class Notification(models.Model):
     ROLS_CHOICES = (
@@ -22,15 +22,23 @@ class Notification(models.Model):
         ordering = ['title']
         verbose_name = 'Уведомление'
         verbose_name_plural = 'Уведомления'
+
 class NotificationUser(models.Model):
-    user = models.ForeignKey("users.Profile", verbose_name="", on_delete=models.CASCADE)
+    user = models.ForeignKey("users.Profile", verbose_name="", on_delete=models.CASCADE, related_name='notification')
     notification = models.ForeignKey("notification.Notification", verbose_name="", on_delete=models.CASCADE)
     send_datetime = models.DateTimeField("Дата отправки", auto_now=False, auto_now_add=False)
     send_status = models.BooleanField("Статус отправки", default=True)
     create = models.DateTimeField("Дата создания", auto_now=False, auto_now_add=True)
 
+    class Meta:
+        ordering = ['send_datetime']
+
+
 @receiver(post_save, sender=Notification)
 def send_notification_to_telegram(sender, instance, **kwargs):
     users_with_role = Profile.objects.filter(rols=instance.rols)
     for user in users_with_role:
-        send_message_to_telegram_chat(user.telegram_id, instance.title, instance.text)
+        try:
+            send_message_to_telegram_chat(user.telegram_id, instance.title, instance.text)
+        except Exception as e:
+            logger.error(f"Ошибка отправки ТГ уведомления при создании: {e}")
