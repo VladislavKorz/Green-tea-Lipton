@@ -1,19 +1,16 @@
 from django.db import models
 
-class Category(models.Model):
-    title = models.CharField("Название", max_length=50)
 
-    def __str__(self):
-        return self.title
-
-    def __unicode__(self):
-        return self.title
 
 class KnowledgeBase(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    file = models.FileField(upload_to='knowledgebase/', null=True, blank=True)
-    category = models.ForeignKey(Category, verbose_name="Категория",
-                                 on_delete=models.CASCADE, related_name="questionList", null=True)
+    title = models.CharField('Заголовок',max_length=255)
+    description = models.TextField('Описание',)
+    file = models.FileField('Загрузить файл',upload_to='knowledgebase/', null=True, blank=True)
+    category = models.ForeignKey("users.Department", verbose_name="Категория",
+                                 on_delete=models.CASCADE, related_name="knowledgebase", null=True)
     def __str__(self):
         return self.title
+    class Meta:
+        ordering = ['title']
+        verbose_name = 'База знаний'
+        verbose_name_plural = 'База знаний'

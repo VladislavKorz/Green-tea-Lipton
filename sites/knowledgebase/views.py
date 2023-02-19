@@ -1,16 +1,11 @@
 
 from django.shortcuts import render
-from .models import KnowledgeBase, Category
+from .models import KnowledgeBase
 
 
-def knowledgebase(request):
-    categories = Category.objects.all()
-    res=[]
-    
+def KnowledgeBase(request):
     context = {
-        'categories': categories,
+        'title': "Обьявления",
     }
-    print(context)
-    return render(request, 'knowledgebase/knowledgebase.html', context=context)
-
+    return render(request,'KnowledgeBase/knowledgebase.html', context)
 

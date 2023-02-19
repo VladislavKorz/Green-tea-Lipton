@@ -7,5 +7,5 @@ from knowledgebase.views import *
 
 
 urlpatterns = [
-    path('', knowledgebase, name='knowledgebase' )
+    path('', KnowledgeBase, name='knowledgebase' )
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
