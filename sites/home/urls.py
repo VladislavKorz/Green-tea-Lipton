@@ -6,5 +6,6 @@ urlpatterns = [
     path('calendar/', calendar, name='calendar'),
     path('search_faq/', search_faq, name='search_faq'),
     path('feedback/', feedback, name='feedback'),
+    path('ratings/', ratings, name='ratings'),
 
 ]
