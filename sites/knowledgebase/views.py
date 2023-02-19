@@ -10,5 +10,5 @@ def KnowledgeBaseViews(request):
         # 'listObj': KnowledgeBase.objects.filter(category=request.user.profile.department)
         'listObj': KnowledgeBase.objects.all()
     }
-    return render(request,'KnowledgeBase/knowledgebase.html', context)
+    return render(request,'knowledgeBase/knowledgebase.html', context)
 
