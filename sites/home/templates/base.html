@@ -212,7 +212,77 @@
 
       </div>
     </div>
-
+        <!-- Модальное окно задать вопрос  -->
+    <div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="questionModalLabel">Задать вопрос</h5>
+          </div>
+          <div class="modal-body">
+              <form method="POST" action="{% url 'feedback'%}">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="recipient">Получатель</label>
+                <select class="form-control" id="recipient" name="recipient">
+                  <option value="HR" selected>HR</option>
+                  <option value="Support" >Поддержка сайта</option>
+                  <option value="Manager">Руководитель</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="subject">Тема сообщения</label>
+                <input type="text" class="form-control" id="subject" name="subject">
+              </div>
+              <div class="form-group">
+                <label for="message">Сообщение</label>
+                <textarea class="form-control" id="message" name="message" rows="5"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Модальное окно Связаться с разработчиками платформы -->
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title " id="contactModalLabel">Связаться с разработчиками платформы</h5>
+            
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="{% url 'feedback'%}">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="recipient">Получатель</label>
+                <select class="form-control" id="recipient" name="recipient">
+                  <option value="HR">HR</option>
+                  <option value="Support" selected>Поддержка сайта</option>
+                  <option value="Manager">Руководитель</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="subject">Тема сообщения</label>
+                <input type="text" class="form-control" id="subject" name="subject">
+              </div>
+              <div class="form-group">
+                <label for="message">Сообщение</label>
+                <textarea class="form-control" id="message" name="message" rows="5"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/assets/icons/feather-icon/feather.min.js' %}"></script>
@@ -226,7 +296,31 @@
     <script src="{% static 'js/assets/custom-card/custom-card.js' %}"></script>
     <script src="{% static 'js/assets/tooltip-init.js' %}"></script>
     <script src="{% static 'js/assets/script.js' %}"></script>
+    <script>
+    $(document).ready(function() {
+      $('#feedbackForm').submit(function(event) {
+        event.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+        var formData = form.serialize();
+
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data: formData,
+          success: function(data) {
+            alert('Сообщение успешно отправлено');
+            $('#feedbackModal').modal('hide');
+          },
+          error: function() {
+            alert('Ошибка при отправке сообщения');
+          }
+        });
+      });
+    });
+</script>
     {% block script %}
     {% endblock %}
+  
   </body>
 </html>
