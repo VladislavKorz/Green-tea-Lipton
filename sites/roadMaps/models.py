@@ -43,3 +43,6 @@ class UserguideAction(models.Model):
 
     def __str__(self):
         return f'{self.user} - {self.guideAction.title}'
+    
+    def get_count_of_actions(self):
+        return self.user_guideActions.count()
