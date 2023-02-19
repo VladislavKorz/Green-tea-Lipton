@@ -12,6 +12,15 @@ def roadMapsViews(request):
     return render(request,'roadMaps/road_maps.html', context)
 
     
+@login_required
+def roadMapsViewsOld(request):
+    context = {
+        'title': "Карта уровней",
+        'mapObj': guideAction.objects.all()
+    }
+    return render(request,'roadMaps/road_mapsOld.html', context)
+
+    
 @xframe_options_exempt
 def roadMapsSingle(request, pk):
     level = guideAction.objects.get(pk=pk)
