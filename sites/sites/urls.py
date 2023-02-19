@@ -32,4 +32,5 @@ urlpatterns = [
     path('tasks/', include('tasks.urls')),
     path('ads/', include('ads.urls') ),
     path('faq/', include('faq.urls')),
+    path('knowledgebase/', include('knowledgebase.urls')),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
