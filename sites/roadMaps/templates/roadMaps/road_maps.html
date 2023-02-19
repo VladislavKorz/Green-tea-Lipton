@@ -23,7 +23,11 @@
             <div class="cd-timeline-block">
               <div class="cd-timeline-img cd-picture {% if date %}bg-success{% else %}bg-primary{% endif %}">
                 {% if date %}
+                {% if extend %}
+                <h5 class="mb-0 text-center" >{{obj.user_count}}</h5>
+                {% else %}
                 <i class="fa fa-star"></i>
+                {% endif %}
                 {% else %}
                 <a href="{% url 'roadMapsComplied' obj.pk %}">
                   <i class="fa fa-star-o"></i>
