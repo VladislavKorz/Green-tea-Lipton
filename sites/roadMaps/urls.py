@@ -4,5 +4,6 @@ from .views import *
 urlpatterns = [
     path('', roadMapsViews, name='roadMaps'),
     path('old/', roadMapsViewsOld, name='roadMapsOld'),
-    path('<int:pk>', roadMapsSingle, name='roadMapsSingle'),
+    path('<int:pk>/', roadMapsSingle, name='roadMapsSingle'),
+    path('complied/<int:pk>/', roadMapsComplied, name='roadMapsComplied'),
 ]
