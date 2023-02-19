@@ -44,16 +44,15 @@ def error_500(request):
 
 @login_required
 def ratings(request):
-    users = Profile.objects.filter(rols='NC')
-    context = {'title':'Рейтинг',
-                'users': users}
-
+    
     from django.db.models import Count
     nc_users = Profile.objects.filter(rols='NC').annotate(
         guide_action_count=Count('user_guideActions')
-    )
-    for user in nc_users:
-        print(user, user.guide_action_count)
+    ).order_by('-guide_action_count')
+    
+    print(nc_users)
+    context = {'title': 'Рейтинг',
+               'users': nc_users}
 
     return render(request, 'home/ratings.html', context = context)
 
