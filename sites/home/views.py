@@ -43,6 +43,12 @@ def error_500(request):
 
 
 @login_required
+def ratings(request):
+    users = Profile.objects.filter(rols='NC')
+    print(users)
+    return render(request, 'home/ratings.html', {'users':users})
+
+@login_required
 def feedback(request):
     if request.method == 'POST':
         recipient = request.POST.get('recipient', '')
