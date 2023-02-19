@@ -1,8 +1,11 @@
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from faq.models import FAQ
 from django.contrib.auth.decorators import login_required
+from users.models import Profile
+from notification.management.commands.notificationBot import send_done_message_to_telegram_chat
+
 
 @login_required
 def index(request):
@@ -10,6 +13,7 @@ def index(request):
         'title': "Привет",
     }
     return render(request,'home/dashboard.html', context)
+
 @login_required
 def calendar(request):
     context = {
@@ -18,8 +22,7 @@ def calendar(request):
     return render(request,'home/calendar.html', context)
 
 
-
-
+@login_required
 def search_faq(request):
     query = request.GET.get('q')
     if query:
@@ -29,3 +32,36 @@ def search_faq(request):
     else:
         results = None
     return render(request, 'faq/faq_list.html', {'results': results, 'query': query})
+
+
+@login_required
+def feedback(request):
+    if request.method == 'POST':
+        recipient = request.POST.get('recipient', '')
+        title = request.POST.get('subject', '')
+        message = request.POST.get('message', '')
+        profile = Profile.objects.get(user=request.user)
+        name = profile.user.first_name
+        last_name = profile.user.last_name
+        department = profile.department
+
+        if recipient == 'HR':
+            dir_profile = department.profiles.filter(roles='HR').first()
+            telgram_id = dir_profile.telegram_id
+
+        if recipient == 'Manager':
+            dir_profile = department.profiles.filter(roles='DIR').first()
+            telgram_id = dir_profile.telegram_id
+        
+        if recipient == 'Support':
+            telgram_id = '516884985'
+        send_done_message_to_telegram_chat(
+            telgram_id, compose_msg(name, last_name, title, message))
+        
+        # redirect to the same page with a success message
+        return redirect(request.META.get('HTTP_REFERER'))
+
+
+def compose_msg(name,last_name,title,message): 
+    msg = f'Сообщение от {name}, {last_name}:\n{title.capitalize()}\n{message}'
+    return msg

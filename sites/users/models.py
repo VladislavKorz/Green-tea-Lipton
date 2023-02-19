@@ -24,7 +24,7 @@ class Profile(models.Model):
     photo = models.ImageField("Фото", upload_to="image/profile/photo/", null=True, blank=True)
     city = models.CharField('Город',max_length=200,null=True)
     post = models.CharField('Должность',max_length=200,null=True)
-    department = models.ForeignKey(Department, verbose_name="Отдел", on_delete=models.CASCADE, null=True)
+    department = models.ForeignKey(Department, verbose_name="Отдел",related_name='profiles', on_delete=models.CASCADE, null=True)
     manager =models.BooleanField('Является руководством?',default=False)
     rols = models.CharField(max_length=10, choices=ROLS_CHOICES, default="NC")
     phone = models.CharField(max_length=20, default='+7')
