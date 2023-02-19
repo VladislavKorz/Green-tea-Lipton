@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from tasks.models import Task
+import datetime
 
 class Department(models.Model):
     title = models.CharField("Название", max_length=50)
@@ -14,6 +15,7 @@ class Department(models.Model):
         ordering = ['title']
         verbose_name = 'Отдел'
         verbose_name_plural = 'Отделы'
+        
 class Profile(models.Model):
     ROLS_CHOICES = (
         ("NC", "Стажёр"),
@@ -42,9 +44,13 @@ class Profile(models.Model):
         else:
             return '/static/images/profile-img.jpg'
 
+    def get_active_notification(self):
+        return self.notification.filter(send_datetime__lte = datetime.datetime.now())
+
     class Meta:
         verbose_name_plural = 'Профили'
         verbose_name = 'Профиль'
+
     def calculate_speed(self):
         total_time = 0
         num_completed = 0
