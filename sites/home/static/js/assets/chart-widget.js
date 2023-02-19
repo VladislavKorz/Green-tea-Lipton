@@ -1176,7 +1176,7 @@ yaxis: {
             },
         },
         series: [71, 63],
-        labels: ['Device 1', 'Device 2'],
+        labels: ['HR', 'Стажеры'],
         legend: {
             show: false,
         },
