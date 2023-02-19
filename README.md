@@ -1,34 +1,9 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/ShaanCoding/ReadME-Generator">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
-  <h3 align="center">ReadME Generator</h3>
-
-  <p align="center">
-    An Awesome ReadME Generator To Jumpstart Your Projects!
-    <br/>
-    Note This Project Is Still W.I.P
-    <br/>
-    <br/>
-    <a href="https://readme.shaankhan.dev"><strong>View Demo »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/ShaanCoding/ReadME-Generator">Explore the docs</a>
-    .
-    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Report Bug</a>
-    .
-    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Request Feature</a>
-  </p>
-</p>
-
-![Downloads](https://img.shields.io/github/downloads/ShaanCoding/ReadME-Generator/total) ![Contributors](https://img.shields.io/github/contributors/ShaanCoding/ReadME-Generator?color=dark-green) ![Issues](https://img.shields.io/github/issues/ShaanCoding/ReadME-Generator) ![License](https://img.shields.io/github/license/ShaanCoding/ReadME-Generator) [![Discord](https://img.shields.io/discord/199663269106024449)](https://discord.gg/6Kf422a)
-
-<br/>
 <p align="center">
   <a href="https://github.com/VladislavKorz/Green-tea-Lipton">
-    <img src="" alt="Logo" width="80" height="80">
+    <img src="https://sun9-79.userapi.com/impg/O5ZAUMnI7j5wmsipnFJ3BCLI5uvzHfLSjHoCww/B58ZB2n_cEc.jpg?size=2048x2048&quality=96&sign=6320979adf8f8a5a882ff1bf84101e8f&type=album" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Readme file
@@ -38,14 +13,6 @@
     Файл, содержащий информацию о сервисе
     <br/>
     <br/>
-    <a href="https://github.com/VladislavKorz/Green-tea-Lipton"><strong>Explore the docs »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/VladislavKorz/Green-tea-Lipton">View Demo</a>
-    .
-    <a href="https://github.com/VladislavKorz/Green-tea-Lipton/issues">Report Bug</a>
-    .
-    <a href="https://github.com/VladislavKorz/Green-tea-Lipton/issues">Request Feature</a>
   </p>
 </p>
 
@@ -59,8 +26,7 @@
 * [Установка и запуск](#prerequisites)
 
 ## Что реализовано
-
-![Screen Shot](https://rm.qycode.ru)
+[Ссылка на проект](https://rm.qycode.ru)
 
 1. Dashboard для Руководителя (Приветствие специалиста / Блок с информацией о Росмолодежь )
 2. Dashboard для HR-специалиста (Приветствие специалиста / Блок с информацией о Росмолодежь )
@@ -134,6 +100,8 @@ python manage.py runserver
 В браузере откроется сайт на локальном хостинге
 
 Приятного пользования
+
+[Ссылка на проект](https://rm.qycode.ru)
 
 
 
